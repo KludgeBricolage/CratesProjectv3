@@ -36,7 +36,11 @@
     </div>
      <%=render 'shared/error_messages', object: flash%>
      <div id="content">
-      <div class="ui loader" id='loader'></div>
+          
+          <div class="ui active dimmer" id="loader">
+            <div class="ui text loader">Loading</div>
+          </div>
+      
       <%=yield%>    
      </div>
          

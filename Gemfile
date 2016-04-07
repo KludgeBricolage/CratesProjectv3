@@ -31,6 +31,8 @@ gem 'groupify'
 #pagination
 gem 'kaminari', '0.15.1'
 
+gem 'public_activity'
+
 
 #image attachements
 gem "paperclip", "~> 4.3"
