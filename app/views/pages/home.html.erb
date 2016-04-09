@@ -14,7 +14,7 @@
                         <div class="header">Currently Logged in : <%=@current_user.alias%></div>
                         <div class="meta">
                           <span>
-                            Contact Number: <%=@current_user.profile.phone_number unless nil%> 
+                            Contact Number: <%=@current_user.profile.phone_number unless profile_null?%> 
                             <div class="ui right floated">Date</div>
                           </span>
                         </div>
@@ -48,6 +48,12 @@
            <ul>
                <header>Query Replies</header>
                <%@r_noti.each do |notif| %>               
+                   <li><%=link_to notif.owner.alias, notif.owner if notif.owner%> <%=render_activity notif%></li>
+               <%end%>
+           </ul>
+           <ul>
+              <header>Forum Notifications</header>
+               <%@f_noti.each do |notif| %>               
                    <li><%=link_to notif.owner.alias, notif.owner if notif.owner%> <%=render_activity notif%></li>
                <%end%>
            </ul>

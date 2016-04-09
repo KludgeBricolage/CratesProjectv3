@@ -6,9 +6,10 @@ class PagesController < ApplicationController
         @inactive_crates = search_byst(current_user.id, 2)
         @fin_crates = search_byst(current_user.id, 3)
         
-        
         @r_noti = PublicActivity::Activity.where( trackable: get_replies).order("created_at desc")
         @q_noti = PublicActivity::Activity.where( trackable: get_c_queries).order("created_at desc")
+        @f_noti = PublicActivity::Activity.where( trackable: get_f_queries).order("created_at desc")
+        
         #get notifications of your forum posts
     end     
     
@@ -50,6 +51,12 @@ class PagesController < ApplicationController
     def get_replies
         a = Reply.where(query_id: current_user.replies.map {|c| c.query_id }.uniq).where.not(user: current_user)
         b = Reply.where(query: current_user.queries).where.not(user: current_user)
+        return a.concat(b)
+    end
+    
+    def get_f_queries
+        a = ForumComment.where(forum_post_id: current_user.forum_comments.map {|c| c.forum_post_id }.uniq).where.not(user: current_user)
+        b = ForumComment.where(forum_post: current_user.forum_posts).where.not(user: current_user)
         return a.concat(b)
     end
     

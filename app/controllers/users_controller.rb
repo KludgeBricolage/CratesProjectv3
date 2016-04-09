@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
-  rescue_from ::ActiveRecord::RecordNotFound, with: :dont_url_manipulate
-  rescue_from ::ActiveRecord::InvalidForeignKey, with: :dont_url_manipulate
-
+  
   include UsersHelper::ForController
     
   before_action :logged_in_user, only: [:edit, :update]
   before_action :correct_user,   only: [:edit, :update]
+  before_action :check_status, only: :show
+  before_action :check_auth, only: :index
   #before_action :admin_user, only: :destroy
     
  
@@ -14,8 +14,8 @@ class UsersController < ApplicationController
   end
     
   def show
-      @report = Report.new
       @user = User.find(params[:id])
+      @report = Report.new
       if (params.has_key?(:rated_point) && params.has_key?(:id))
         current_user.user_ratings.new(rating_id: params[:rated_point],rated_person: params[:id]).save unless is_rated?(params[:id])
       end
@@ -57,6 +57,17 @@ class UsersController < ApplicationController
     end
   end
     
+  def deactivate
+      change_status(2,current_user)
+      log_out
+      redirect_to root_url
+  end
+    
+  def activate
+      #change_status(2,current_user)
+      #log_out
+      #redirect_to root_url
+  end
     
     
   private
@@ -64,5 +75,21 @@ class UsersController < ApplicationController
       params.require(:user).permit(:alias, :email, :password,:password_confirmation) 
   end
   
+  def check_status
+      @user = User.find(params[:id])
+      if @user.user_status_id > 1
+          redirect_to root_url, notice: "User Account Inactivated."
+      end
+  end
+    
+  def change_status(asi_id,user)
+      change_crates_asi(asi_id,user)
+      user.update_attributes(user_status_id: asi_id)
+  end
+    
+  def change_crates_asi(asi_id,user)
+      Crate.where(user_id: user.id).update_all(active_status_id: asi_id)
+  end    
+    
     
 end

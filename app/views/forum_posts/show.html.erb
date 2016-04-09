@@ -35,7 +35,7 @@
     <%@forum_comments.each do |comment|%>
        <div class="comment">
           <div class="avatar">
-           <%=image_tag target_user(comment.user_id).avatar, class:'ui tiny image'%>
+              <%=image_tag target_user(comment.user_id).avatar.url(:small), class:'ui tiny image'%>
            </div>
         <div class="content">
             <%=link_to @target_user.alias, @target_user, class:'author'%>
@@ -61,7 +61,7 @@
                   <%= f.hidden_field :user_id, value: current_user.id%>
                   <%= f.hidden_field :forum_post_id, value: @forum_post.id%>
                 </div>
-            <%= button_tag(type: 'submit', class: "ui submit labeled icon button") do %>
+            <%=button_tag(type: 'submit', class: "ui submit labeled icon button") do %>
                 <i class="edit icon"></i> Reply
             <% end %>
         <% end %>

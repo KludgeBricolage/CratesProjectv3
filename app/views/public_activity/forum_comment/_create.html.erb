@@ -1,0 +1,6 @@
+
+<%if activity.trackable.forum_post%>
+<%=link_to 'commented', forum_post_path(activity.trackable.forum_post, anchor: activity.trackable)%> on <%=link_to activity.trackable.forum_post.title, activity.trackable.forum_post%> post
+<%else%>
+commented on the post which has been removed
+<%end%>

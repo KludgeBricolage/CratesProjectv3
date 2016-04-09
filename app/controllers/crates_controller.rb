@@ -2,6 +2,7 @@ class CratesController < ApplicationController
     before_action :logged_in_user, only: [:create, :destroy, :edit]
     before_action :correct_crate,   only: [:destroy, :edit, :update]
     before_action :add_profile, only: [:new,:create]
+    before_action :check_user_status, only: [:show]
     rescue_from ::ActiveRecord::RecordNotFound, with: :dont_url_manipulate
     rescue_from ::ActiveRecord::InvalidForeignKey, with: :dont_url_manipulate
 
@@ -19,7 +20,7 @@ class CratesController < ApplicationController
     
     def add_profile
         if current_user.profile.nil?
-            flash[:success] = 'Edit your Profile First'
+            flash[:success] = 'Create a Profile First'
             redirect_to new_user_profile_url(current_user.id)
         end
     end
@@ -92,4 +93,10 @@ class CratesController < ApplicationController
         redirect_to root_url if current_user.id != @crate.user.id
     end
     
+    def check_user_status
+        @user = Crate.find(params[:id]).user
+        if @user.user_status_id > 1
+            redirect_to root_url, notice: "The User of this crate has been inactivated"
+        end
+    end
 end

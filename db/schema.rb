@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160408193952) do
+ActiveRecord::Schema.define(version: 20160409063010) do
 
   create_table "active_statuses", force: :cascade do |t|
     t.string "name", limit: 255
@@ -214,6 +214,16 @@ ActiveRecord::Schema.define(version: 20160408193952) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer  "user_id",       limit: 4
+    t.integer  "forum_post_id", limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "subscriptions", ["forum_post_id"], name: "index_subscriptions_on_forum_post_id", using: :btree
+  add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id", using: :btree
+
   create_table "taggings", force: :cascade do |t|
     t.integer  "crate_id",   limit: 4
     t.integer  "tag_id",     limit: 4
@@ -278,6 +288,8 @@ ActiveRecord::Schema.define(version: 20160408193952) do
   add_foreign_key "queries", "users"
   add_foreign_key "replies", "queries"
   add_foreign_key "replies", "users"
+  add_foreign_key "subscriptions", "forum_posts"
+  add_foreign_key "subscriptions", "users"
   add_foreign_key "taggings", "crates"
   add_foreign_key "taggings", "tags"
   add_foreign_key "user_ratings", "ratings"

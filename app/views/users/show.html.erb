@@ -55,11 +55,7 @@
        <%=render 'crates/crate_collection', crates: @act_crates %>
    
      
-    <%if has_permission?(@user) %>
-      <div class="ui label">
-          <%= link_to 'Delete User', @user, method: :delete,data: { confirm: "User will be permanently deleted.You sure?" }%>
-      </div>
-    <%end%>
+    
      
     </div>
 

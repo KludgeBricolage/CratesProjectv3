@@ -78,7 +78,7 @@
                     <%query.replies.all.each do |reply|%>
                   <div class="comment">
                     <a class="avatar">
-                    <%=image_tag reply.user.avatar, class:'ui tiny image'%>
+                    <%=image_tag reply.user.avatar.url(:small), class:'ui tiny image'%>
                     </a>
                     <div class="content">
                         <%=link_to reply.user.alias, reply.user, class: 'author'%>

@@ -21,6 +21,7 @@ class ForumPostsController < ApplicationController
     def create
         @forum_post = current_user.forum_posts.build(forum_post_params)
         if @forum_post.save
+            @forum_post.subscriptions.create.set_user!(current_user)
             flash[:success] = 'Post has been posted!'
             redirect_to @forum_post
         else

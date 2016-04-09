@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+    
+    
+    
     get 'password_resets/new'
     get 'password_resets/edit'
     root 'pages#home'
@@ -17,7 +20,7 @@ Rails.application.routes.draw do
     post 'new_comment' => 'forum_comments_controller#create', as: 'new_comment'
     get 'crate_manager' => 'pages#crate_manager'
     post 'change_status' => 'pages#change_status'
-    
+    post 'deactivate_user' => 'users#deactivate'
     resources :users do
         resources :profiles
     end
@@ -38,5 +41,5 @@ Rails.application.routes.draw do
     end
     resources :forum_comments, only: [:new,:create,:destroy,:edit,:update] 
     
-    
+    #match "*path", to: "application#dont_url_manipulate", via: :all
 end
