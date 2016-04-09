@@ -1,0 +1,16 @@
+<%if activity.trackable.query%>
+    
+    replied on
+    <%if activity.trackable.query.user_id == @current_user.id%>
+     your
+    <%else%>
+      the
+    <%end%>
+      
+       query
+     
+    <%=link_to activity.trackable.query.title, crate_path(activity.trackable.query.crate, anchor: activity.trackable.query.title)%>
+    posted on <%=link_to activity.trackable.query.crate.name, activity.trackable.query.crate%>
+<%else%>
+posted a query on a crate which has been removed
+<%end%>

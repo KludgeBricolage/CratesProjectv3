@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
     has_many :forum_posts
     has_many :forum_comments
     has_many :queries
-    has_many :replies, through: :queries
+    has_many :replies
     
     #avatar
     has_attached_file :avatar, styles: {

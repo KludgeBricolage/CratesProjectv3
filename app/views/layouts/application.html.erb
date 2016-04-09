@@ -37,7 +37,7 @@
      <%=render 'shared/error_messages', object: flash%>
      <div id="content">
           
-          <div class="ui active dimmer" id="loader">
+          <div class="ui active dimmer" id="loader" style="height:100% !important">
             <div class="ui text loader">Loading</div>
           </div>
       
@@ -51,6 +51,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
      <script>
+         $("#loader").css("height", $(document).height() );
         $('.re.ui.reply.form').hide();
          
         $('.ui.dropdown').dropdown();

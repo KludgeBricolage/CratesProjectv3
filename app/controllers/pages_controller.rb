@@ -5,6 +5,11 @@ class PagesController < ApplicationController
         @active_crates = search_byst(current_user.id, 1)
         @inactive_crates = search_byst(current_user.id, 2)
         @fin_crates = search_byst(current_user.id, 3)
+        
+        
+        @r_noti = PublicActivity::Activity.where( trackable: get_replies).order("created_at desc")
+        @q_noti = PublicActivity::Activity.where( trackable: get_c_queries).order("created_at desc")
+        #get notifications of your forum posts
     end     
     
     def crate_manager
@@ -36,5 +41,17 @@ class PagesController < ApplicationController
     def is_logged_in
         render :home_guest unless logged_in?
     end
+    
+    def get_c_queries
+        c = Query.where(crate: current_user.crates)
+    end
+    
+    #get replies from queries you replied
+    def get_replies
+        a = Reply.where(query_id: current_user.replies.map {|c| c.query_id }.uniq).where.not(user: current_user)
+        b = Reply.where(query: current_user.queries).where.not(user: current_user)
+        return a.concat(b)
+    end
+    
     
 end

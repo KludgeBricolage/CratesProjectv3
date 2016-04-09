@@ -1,0 +1,6 @@
+<%if activity.trackable.crate || activity.trackable.crate.active_status_id != 1%>
+posted a query <%=link_to activity.trackable.title, crate_path(activity.trackable.crate, anchor: activity.trackable.title )%> 
+    on your <%=link_to activity.trackable.crate.name,activity.trackable.crate%>
+<%else%>
+posted a query on a crate which has been removed
+<%end%>

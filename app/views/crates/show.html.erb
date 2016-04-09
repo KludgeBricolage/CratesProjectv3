@@ -54,7 +54,7 @@
             <div class="ui threaded comments">
             <h3 class="ui dividing header">Queries</h3>    
             <%@queries.each do |query|%>
-               <div class=" comment">
+                <div class=" comment" id="<%=query.title%>">
                   <div class="avatar">
                     <%user= query.user%>
                     <%=image_tag user.avatar, class:'ui tiny image'%>

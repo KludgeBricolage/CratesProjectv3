@@ -5,6 +5,7 @@ class RepliesController < ApplicationController
         @reply = @q.replies.build(reply_params)
         if @reply.save
             @reply.set_user!(current_user)
+            @reply.create_activity :create, owner: current_user
             flash[:success] = 'Reply Posted'
             redirect_to @q.crate
         else

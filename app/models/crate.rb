@@ -9,6 +9,7 @@ class Crate < ActiveRecord::Base
   has_many :pictures, :dependent => :destroy
   has_many :queries, :dependent => :destroy
   has_one :location
+    
   default_scope -> { order(created_at: :desc)}
   validate  :validate_tags
   validate  :validate_pictures

@@ -28,17 +28,30 @@
                 </div>
             </div>
         </div>
-        <div class="two column row">
-           <ul>
+      </div>
+    </div>
+     
+     <div class="ui container">
+         <ul>
              <div class="header">Crates</div>
               <li>Active: <%=@active_crates.size%></li>
               <li>Inactive: <%=@inactive_crates.size%></li>
               <li>Archived: <%=@fin_crates.size%></li>
               <li>Total: <%=@active_crates.size + @inactive_crates.size + @fin_crates.size%> </li>
            </ul>
-        </div>
-      </div>
-    </div>
+           <ul>
+              <header>Crate Queries</header>
+               <%@q_noti.each do |notif| %>               
+                   <li><%=link_to notif.owner.alias, notif.owner if notif.owner%> <%=render_activity notif%></li>
+               <%end%>
+           </ul>
+           <ul>
+               <header>Query Replies</header>
+               <%@r_noti.each do |notif| %>               
+                   <li><%=link_to notif.owner.alias, notif.owner if notif.owner%> <%=render_activity notif%></li>
+               <%end%>
+           </ul>
+     </div>
       
    
 

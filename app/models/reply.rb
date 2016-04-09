@@ -1,4 +1,5 @@
 class Reply < ActiveRecord::Base
+  include PublicActivity::Common 
   belongs_to :user
   belongs_to :query
   validates :body, presence:true, length:{maximum: 150}
@@ -7,4 +8,9 @@ class Reply < ActiveRecord::Base
         self.user_id = user.id
         self.save
     end
+    
+    def self.get_q_id
+        self.query.id
+    end
+    
 end

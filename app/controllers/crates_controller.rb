@@ -63,7 +63,6 @@ class CratesController < ApplicationController
             flash[:success] = 'Crate updated'
             redirect_to @crate
         else
-            
             render 'edit'
         end
     end

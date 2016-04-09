@@ -1,5 +1,6 @@
 class ForumPost < ActiveRecord::Base
     
+    
     belongs_to :user
     has_one :forum_category
     has_many :forum_comments, dependent: :destroy

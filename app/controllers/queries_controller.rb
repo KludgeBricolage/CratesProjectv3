@@ -6,8 +6,8 @@ class QueriesController < ApplicationController
         @query = @crate.queries.build(query_params)
         if @query.save
             @query.set_user!(current_user)
-            flash[:success] = 'Query Posted'
-            redirect_to @crate
+            @query.create_activity :create, owner: current_user
+            redirect_to @crate, notice: 'Query Posted'
         else
             flash[:error] = @query.errors.full_messages.join(", ")
             redirect_to @crate

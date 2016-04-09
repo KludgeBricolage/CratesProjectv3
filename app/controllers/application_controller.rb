@@ -1,8 +1,7 @@
 class ApplicationController < ActionController::Base
-
   protect_from_forgery with: :exception
   include SessionsHelper
-    
+  
     # Confirms a logged-in user.
   def logged_in_user
     unless logged_in?
@@ -12,6 +11,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  
   def check_auth
         unless admin?
             flash[:error] = "Invalid Action"
