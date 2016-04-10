@@ -5,8 +5,7 @@
             <div class="ui inverted white header"><%= f.label 'Report user for: '%></div>
             <%= f.text_area :description, size: "10x10" , class:'ui field',required: true%>
             <%= f.submit "Submit Report",class:'ui button'%>
-            <%= f.hidden_field :reported_id, value: user.id%>
-            <%= f.hidden_field :reporter, value: current_user.id%>
+            <%= f.hidden_field :reported_id, value: params[:id]%>
             <% end %>
         </div>
 </div>

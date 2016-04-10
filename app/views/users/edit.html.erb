@@ -17,12 +17,10 @@
         <%= f.submit "Edit Account", class: "ui submit button"%>
         <% end %>
     </div>
-    
     <div class="row">
         <div class="column">
             <h1>DANGER ZONE</h1>
             <%=link_to 'Deactivate Account', deactivate_user_path,method: 'post',data: { confirm: "Account will be DEACTIVATED. Continue?" }%>
         </div>
     </div>
-    
 </div>

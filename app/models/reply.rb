@@ -5,7 +5,7 @@ class Reply < ActiveRecord::Base
   validates :body, presence:true, length:{maximum: 150}
   validates :query_id, presence: true, allow_nil: false
     
-     def set_user!(user)
+    def set_user!(user)
         self.user_id = user.id
         self.save
     end

@@ -4,6 +4,7 @@ class ReportsController < ApplicationController
     def create
         @report = Report.new(report_params)
         if @report.save
+            set_user(current_user)
             flash[:success] = 'Report has been submitted'
             redirect_to '/'
         else

@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
     has_many :forum_comments
     has_many :queries
     has_many :replies
+    has_many :subscriptions, through: :forum_posts
     
     #avatar
     has_attached_file :avatar, styles: {
@@ -36,6 +37,7 @@ class User < ActiveRecord::Base
     default_scope {order('users.alias ASC')}
     attr_accessor :remember_token, :activation_token, :reset_token
     
+
     # Returns the hash digest of the given string.
     def User.digest(string)
         cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -88,6 +90,7 @@ class User < ActiveRecord::Base
         UserMailer.password_reset(self).deliver_now
     end
     
+    
     ################
     private
     def down_email
@@ -99,5 +102,6 @@ class User < ActiveRecord::Base
       self.activation_token  = User.new_token
       self.activation_digest = User.digest(activation_token)
     end
+    
     
 end

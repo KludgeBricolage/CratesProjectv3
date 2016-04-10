@@ -11,7 +11,7 @@
             </tr>    
             </thead>
            <tbody>
-              <%postings(categ.id).by_last_comment.each do |post| %>
+              <%postings(categ.id).by_pin.by_last_comment.each do |post| %>
                <%=render 'shared/forum_post', post: post%>
                 <%end%>
            </tbody>    
