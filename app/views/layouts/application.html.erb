@@ -5,15 +5,18 @@
     <script src="//cdnjs.cloudfare.com/ajax/libs/html5shiv/r29/html5.min.js">
     </script>
     <![endif]-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  
+  <meta name="viewport" content="width=device-width, user-scalable=no" />
+
   <title><%=yield(:title)%> CratesProjectv3</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
 </head>
 <body id="body">
-   
+   <div class="ui thin sidebar inverted vertical menu">
+        <%=render 'layouts/sidebar' if logged_in?%>
+    </div>
+    <div class="pusher">
     <div class="ui top attached menu">
         
         <%if logged_in?%>
@@ -23,49 +26,55 @@
         <%else%>
         <div class="right menu">
         <a class="item"  href="/login"><i class="user icon"></i>Login</a>
-        <a class="item"  href="/signup"><i class="write icon"></i>Signup</a>
-        <a class="item"  href="/community"><i class="comments outline icon"></i>Discussion Boards</a>
-        <a class="item"  href="/search"><i class="shop icon"></i>Market</a>
+        <a class="item"  href="/community"><i class="comments outline icon"></i></a>
+        <a class="item"  href="/search"><i class="shop icon"></i></a>
         <%end%>
-        <a class="item"  href="/help"><i class="help icon"></i>About/Help</a>      
+        <a class="item"  href="/help"><i class="help icon"></i></a>      
        </div>
        
     </div>
-    <div class="ui thin sidebar inverted vertical menu">
-        <%=render 'layouts/sidebar' if logged_in?%>
-    </div>
+    
+    
      <%=render 'shared/error_messages', object: flash%>
      <div id="content">
           
           <div class="ui active dimmer" id="loader" style="height:100% !important">
-            <div class="ui text loader">Loading</div>
+            <div class="ui large text loader">Loading</div>
           </div>
       
       <%=yield%>    
      </div>
          
-         <h1></h1>
-         <h1></h1>
+         </div>
   
     
+    <h1></h1>
+    <h1></h1>
+    </div>
+    
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
      <script>
-         $("#loader").css("height", $(document).height() );
+        $("#loader").css("height", $(document).height() );
         $('.re.ui.reply.form').hide();
-         
         $('.ui.dropdown').dropdown();
-        
-         $('#side_btn').on('click', function(){
-           $('.ui.sidebar')
-            .sidebar('toggle')
-           ;    
-         })
-         
-         $('.reply').on("click", function(){
+        $('#side_btn').on('click', function(){
+            $('.ui.sidebar')
+                .sidebar('toggle')
+               ;    
+         })         
+         $('.reply').on("click", function(e){
+                e.stopPropagation();
                 $(this).parent().parent().parent().children('.comments').children('.re.ui.reply.form').toggle();
          });
+         $('.bxslider').bxSlider({
+            mode: 'fade',
+            captions: true
+         });
+         $('#searchMenu').click(function(e){
+            e.stopPropagation();
+            $('#advSearch').toggleClass('active')
+         });
+         
     </script>
-    </div>
 </body>
 </html>

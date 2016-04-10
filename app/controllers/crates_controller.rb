@@ -15,7 +15,7 @@ class CratesController < ApplicationController
             @crates = Crate.tagged_with(params[:tag]).where(:active_status_id => '1').page(params[:page]).per(12)
         elsif params[:q]
             @crates = @search.result.page(params[:page]).per(12)
-        end       
+        end
     end
     
     def add_profile

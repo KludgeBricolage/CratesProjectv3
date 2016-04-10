@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160409063010) do
+ActiveRecord::Schema.define(version: 20160410122139) do
 
   create_table "active_statuses", force: :cascade do |t|
     t.string "name", limit: 255
@@ -124,10 +124,9 @@ ActiveRecord::Schema.define(version: 20160409063010) do
   create_table "locations", force: :cascade do |t|
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.string   "place_id",   limit: 255
     t.string   "name",       limit: 255
-    t.float    "long",       limit: 53
-    t.float    "lat",        limit: 53
+    t.string   "long",       limit: 255
+    t.string   "lat",        limit: 255
   end
 
   create_table "pictures", force: :cascade do |t|
@@ -219,6 +218,7 @@ ActiveRecord::Schema.define(version: 20160409063010) do
     t.integer  "forum_post_id", limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_active",               default: true
   end
 
   add_index "subscriptions", ["forum_post_id"], name: "index_subscriptions_on_forum_post_id", using: :btree

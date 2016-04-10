@@ -181,7 +181,7 @@ DEPENDENCIES
   groupify
   jbuilder (~> 2.0)
   jquery-rails
-  jquery-turbolinks (~> 2.1)
+  jquery-turbolinks
   kaminari (= 0.15.1)
   mysql2 (~> 0.3.18)
   paperclip (~> 4.3)

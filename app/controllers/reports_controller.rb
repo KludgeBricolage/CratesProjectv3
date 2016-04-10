@@ -3,8 +3,8 @@ class ReportsController < ApplicationController
     
     def create
         @report = Report.new(report_params)
-        if @report.save
-            set_user(current_user)
+        if @report.save!
+            @report.set_user!(current_user)
             flash[:success] = 'Report has been submitted'
             redirect_to '/'
         else
@@ -14,7 +14,7 @@ class ReportsController < ApplicationController
     
     private
     def report_params
-        params.require(:report).permit(:description,:reported_id,:reporter)
+        params.require(:report).permit(:description,:reported_id)
     end
     
 end

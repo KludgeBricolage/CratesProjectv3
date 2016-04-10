@@ -1,11 +1,23 @@
 
 <% object.each do |key,value|%>
         <%if value.present?%>
+                
                 <div class="ui <%=key%> message" id="error">
-                <%=value%>
+                <i class="close icon"></i>
+                <%=value%> 
                 </div>
                 <h1></h1> 
         <%end%> 
 <%end%>
 
 
+<script>
+$('.message .close')
+  .on('click', function() {
+    $(this)
+      .closest('.message')
+      .transition('fade')
+    ;
+  })
+;
+</script>

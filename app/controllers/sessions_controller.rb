@@ -15,14 +15,14 @@ class SessionsController < ApplicationController
     
   def create
       user = User.find_by(email: params[:session][:email].downcase)
-      
       if user && user.authenticate(params[:session][:password])
-          if user.activated? 
+          if user.activated?
               if user_status_enab(user)
                 message = "Your Account appears to be disabled"
                 flash[:warning] = message   
                 redirect_to root_url
               else
+                reset_session
                 log_in user
                 params[:session][:remember_me] == '1' ? remember(user) : forget(user)
                 if user.profile.nil?

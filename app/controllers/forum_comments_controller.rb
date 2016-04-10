@@ -5,6 +5,7 @@ class ForumCommentsController < ApplicationController
         @forum_post = ForumPost.find(params[:forum_comment][:forum_post_id])
         @forum_comment = @forum_post.forum_comments.build(forum_comment_params)
         if @forum_comment.save
+            @forum_post.subscriptions.create.set_user!(current_user) unless Subscription.where(user: current_user, forum_post: @forum_post).exists?        
             @forum_comment.create_activity :create, owner: current_user
             @forum_post.touch
             flash[:success] = 'Comment has been posted!'

@@ -29,6 +29,18 @@ class ForumPostsController < ApplicationController
         end   
     end
     
+    def change_subsc
+        @forum_post = ForumPost.find(params[:id])
+        @subscription = Subscription.where(user_id: current_user.id, forum_post_id: params[:id]).first
+        if @subscription != nil
+            @subscription.toggle!(:is_active)
+            redirect_to @forum_post, notice: 'You have unsubscibed from this post'
+        else
+            Subscription.create(forum_post: @forum_post, user: current_user)
+            redirect_to @forum_post, notice: 'You have subscibed from this post'
+        end
+    end
+    
     def edit
         @forum_post = ForumPost.find(params[:id])
     end

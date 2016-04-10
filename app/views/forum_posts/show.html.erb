@@ -16,7 +16,10 @@
            </div>
            <%if logged_in?%>
            <div class="ui segment">
-               <div class="ui label"><%=link_to 'Edit', edit_forum_post_path(@forum_post.id)%></div>         
+               <%if @forum_post.user == @current_user %>
+                <div class="ui label"><%=link_to 'Edit', edit_forum_post_path(@forum_post.id)%></div>
+               <%end%>
+               <div class="ui label"><%=link_to 'Subscribe', change_subsc_path(id: @forum_post.id)%></div>
                <%if admin?%>
                <div class="ui label"><%=link_to 'Pin', change_pin_path(id: @forum_post.id)%></div>
                <div class="ui label"><%=link_to 'Lock', change_lock_path(id: @forum_post.id)%></div>

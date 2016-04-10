@@ -1,5 +1,8 @@
+
+<h3></h3>
 <div class="ui container">
-<%= search_form_for @search, html: { class: 'ui form' ,id: 'advSearch'} do |f|%>   
+    <button class="ui button" id="searchMenu" ><i class="sidebar icon"></i>Search Menu</button>    
+    <%=search_form_for @search, html: { class: 'ui form' ,id: 'advSearch'} do |f|%>
     <div class="fifteen fields">
         <div class="three wide field">
             <%=f.label :name_cont, 'Advance Search' %>
@@ -31,18 +34,19 @@
         </div>
             <%=f.hidden_field :active_status_id_eq, :value => 1%>
         <div class="one wide field">
-           <label class="hidden">Search</label>
+           <label class="hidden" id="searchLabel">Search</label>
             <%=f.submit 'Search', class: 'ui button'%>
-        </div>
-            
+        </div>        
     </div>
-    <div class="fields">
-       <div class="one wide field">Sort by:</div>
-        <div class="one wide field"><%=sort_link @search, :name, 'Name'%></div>
-        <div class="one wide field"><%=sort_link @search, :qualities_id, 'Quality'%></div>
-        <div class="two wide field"><%=sort_link @search, :created_at, 'Posted Time'%></div>
-        <div class="one wide field"><%=sort_link @search, :states_id, 'Status'%></div>
-        <div class="one wide field"><%=sort_link @search, :price, 'Price'%></div>
+    <div class="field">
+       <ul id="sortList" style="font-size: 1.1em;">
+       <li>Sort By: </li>
+       <li><%=sort_link @search, :name, 'Name', default_order: :desc%> &nbsp;&nbsp;</li>
+       <li><%=sort_link @search, :qualities_id, ' Quality '%>&nbsp;&nbsp;</li>
+       <li><%=sort_link @search, :created_at, ' Posted Time '%>&nbsp;&nbsp;</li>
+       <li><%=sort_link @search, :states_id, ' Status '%>&nbsp;&nbsp;</li>
+       <li><%=sort_link @search, :price, ' Price '%>&nbsp;&nbsp;</li>
+      </ul>
     </div>
 <%end%>
 <%if params['q'] != nil %>

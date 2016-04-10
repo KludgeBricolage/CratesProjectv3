@@ -12,6 +12,7 @@
 
  *= require reset
  *= require normalize
+ *= require jquery.bxslider
  *= require_tree .
  *= require_self
  */
@@ -101,7 +102,7 @@ img.display{
     padding: 1em;
 }
 
-@media only screen and (max-width : 723px){
+@media only screen and (max-width : 800px){
 
     #items > #item{
         min-width: 30.67%;

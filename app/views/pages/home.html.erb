@@ -2,20 +2,19 @@
 <div class="profile container">
       <div class="ui centered grid" style="margin:20px">
         <div class="row">
-            <div class="ui blue column" style="height:200px;width:200px">
+            <div class="ui column" style="height:200px;width:200px">
                 <div id="avatar" class="ui circular image">
                     <%=image_tag @current_user.avatar.url(:medium), class: 'ui circular image'%>
                 </div>
             </div>
-            <div class="ui six wide red column">
+            <div class="ui six wide column">
                 <div class="ui items item">
                   <div class="item">
                     <div class="content">
                         <div class="header">Currently Logged in : <%=@current_user.alias%></div>
                         <div class="meta">
                           <span>
-                            Contact Number: <%=@current_user.profile.phone_number unless profile_null?%> 
-                            <div class="ui right floated">Date</div>
+                            Contact Number: <%=@current_user.profile.phone_number unless profile_null?%>
                           </span>
                         </div>
                         <div class="description">

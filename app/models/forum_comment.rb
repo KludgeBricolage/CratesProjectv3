@@ -4,8 +4,7 @@ class ForumComment < ActiveRecord::Base
   belongs_to :forum_post
   validates :comment, presence: true, length: {maximum: 100}
   validates :user_id, presence: true
-  validates :forum_post_id, presence: true
-    
+  validates :forum_post_id, presence: true  
   default_scope -> { order(created_at: :asc)}
     
 end

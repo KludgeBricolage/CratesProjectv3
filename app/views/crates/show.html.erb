@@ -1,15 +1,24 @@
 <%=content_for :title, @crate.name %>
 <h2></h2>
 <div class="ui container">
+       <h2 class="header">
+        <div class="ui large breadcrumb">
+            <%=link_to 'Market', search_path , class: 'section'%>
+          <div class="divider"> / </div>
+            <div class="active section"><%=@crate.name%></div>
+        </div>
+    </h2>
         <div class="ui <%=find_state_color @crate.states_id%> label raised segment" id="status_tag">
             <%=find_status @crate.states_id %>
         </div>
         <div class="ui items container">
           <div class="item">
-               <div class="ui very large image">
-                <%@images.each do |pic| %>
-                    <%= image_tag pic.image.url(:medium)%>
-                <% end %>
+               <div class="ui container" id="bxSlCn">
+                    <ul class="bxslider">
+                       <%@images.each do |pic| %>
+                        <li><%= image_tag pic.image.url(:medium)%></li>
+                        <% end %>                        
+                    </ul>                    
                 </div>
                 <div class="content">
                    <div class="ui segment desc">
@@ -107,5 +116,3 @@
             <%=render 'queries/query_form', query: @query %>
            </div>
 </div>
-
-

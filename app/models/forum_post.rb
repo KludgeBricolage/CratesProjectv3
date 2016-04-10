@@ -11,8 +11,5 @@ class ForumPost < ActiveRecord::Base
     validates :title, presence: true, length: {maximum: 20}
     validates :description, presence: true, length: {maximum: 500}
     
-    def self.subscribers
-        
-    end
     
 end

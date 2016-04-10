@@ -15,6 +15,8 @@
 //= require jquery_ujs
 //= require semantic
 //= require forem
+//= require crates
+//= require jquery.bxslider.min
 //= require masonry.pkgd.min
 //= require turbolinks
 //= require_tree.

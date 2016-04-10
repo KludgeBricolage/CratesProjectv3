@@ -38,3 +38,40 @@ p, #cratePartial{
 .crate.ui.table{
     max-width: 250px !important;
 }
+
+#bxSlCn{
+    max-width: 385px !important;
+}
+#searchMenu{
+    display: none;
+}
+#sortList{
+    font-size: 1.1em;
+    margin-left: -40px; 
+    margin-top: -15px;
+}
+#sortList > li{
+    display: inline;
+}
+@media only screen and (max-width : 768px){
+    #searchMenu{
+        display: block;
+        margin-left: 16px;
+    }
+    #searchMenu > i{
+        font-size: 1.5em;
+    }
+    #advSearch{
+        display: none;
+    }
+    #advSearch.active{
+        display: block;
+        margin-top: 20px;
+    }
+    #searchLabel{
+        display: none;
+    }
+    #sortList{
+    margin-top: 0px !important;
+}
+}

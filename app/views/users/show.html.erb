@@ -68,11 +68,11 @@
 
 
 <script>
-     $('#reportBtn').click(function(){
+     $('#reportBtn').click(function(e){
+         e.stopPropagation();
         $('#reportModal')
             .modal('show')
             .modal('setting','closable',true)
         ;
     });
-    
 </script>
