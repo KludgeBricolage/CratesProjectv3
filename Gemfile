@@ -27,6 +27,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'ransack', '~> 1.7'
 #managing groups
 gem 'groupify'
+#pretty urls
+gem 'friendly_id', '~> 5.1.0'
 
 #pagination
 gem 'kaminari', '0.15.1'

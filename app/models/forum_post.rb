@@ -1,5 +1,6 @@
 class ForumPost < ActiveRecord::Base
-        
+    extend FriendlyId
+    friendly_id :title, use: :slugged        
     belongs_to :user
     has_one :forum_category
     has_many :subscriptions, dependent: :destroy

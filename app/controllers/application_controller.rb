@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
-  rescue_from ::ActiveRecord::RecordNotFound, with: :dont_url_manipulate
-  rescue_from ::ActiveRecord::InvalidForeignKey, with: :dont_url_manipulate
+  #rescue_from ::ActiveRecord::RecordNotFound, with: :dont_url_manipulate
+  #rescue_from ::ActiveRecord::InvalidForeignKey, with: :dont_url_manipulate
 
   protect_from_forgery with: :exception
   include SessionsHelper

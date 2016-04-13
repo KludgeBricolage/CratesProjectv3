@@ -75,7 +75,7 @@ class CratesController < ApplicationController
     end
     
     def show
-        @crate = Crate.find(params[:id])
+        @crate = Crate.friendly.find(params[:id])
         @images = @crate.pictures
         @contact = @crate.user.profile.phone_number        
         @query = @crate.queries.build
@@ -85,7 +85,7 @@ class CratesController < ApplicationController
        
     private
     def crate_params
-        params.require(:crate).permit(:name,:description,:states_id, :all_tags,:price,:qualities_id,:locations_id,:category_id)
+        params.require(:crate).permit(:name,:description,:states_id, :all_tags,:price,:qualities_id,:locations_id,:category_id,:slug)
     end
     
     def correct_crate

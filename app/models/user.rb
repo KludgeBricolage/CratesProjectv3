@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+    extend FriendlyId
+    friendly_id :alias, use: :slugged
+    
     #interruptors
     before_save :down_email
     before_create :create_activation_digest

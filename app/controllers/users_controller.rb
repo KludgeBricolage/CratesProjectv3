@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
     
   def show
-      @user = User.find(params[:id])
+      @user = friendly_find(params[:id])
       @report = Report.new
       if (params.has_key?(:rated_point) && params.has_key?(:id))
         current_user.user_ratings.new(rating_id: params[:rated_point],rated_person: params[:id]).save unless is_rated?(params[:id])
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   end
     
   def unrate
-      @user = User.find_by(id: params[:id])
+      @user = friendly_find(params[:id])
       if UserRating.where(user_id: current_user.id, rated_person: @user.id)
       UserRating.where(user_id: current_user.id, rated_person: @user.id).first.destroy
       else
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   end
     
   def correct_user
-      @user = User.find(params[:id])
+      @user = friendly_find(params[:id])
       redirect_to(root_url) unless  current_user?(@user)
   end
     
@@ -53,11 +53,11 @@ class UsersController < ApplicationController
   end
     
   def edit
-    @user = User.find(params[:id])
+    @user = friendly_find(params[:id])
   end
     
   def update
-    @user = User.find(params[:id])
+    @user = friendly_find(params[:id])
     if @user.update_attributes(user_params)
         @user.update_attributes(avatar: params[:user][:avatar]) unless params[:user][:avatar] == nil
         flash[:success] = 'Profile updated'
@@ -82,11 +82,11 @@ class UsersController < ApplicationController
     
   private
   def user_params
-      params.require(:user).permit(:alias, :email, :password,:password_confirmation) 
+      params.require(:user).permit(:alias, :email, :password,:password_confirmation, :slug) 
   end
   
   def check_status
-      @user = User.find(params[:id])
+      @user = friendly_find(params[:id])
       if @user.user_status_id > 1
           redirect_to root_url, notice: "User Account Inactivated."
       end
@@ -101,5 +101,8 @@ class UsersController < ApplicationController
       Crate.where(user_id: user.id).update_all(active_status_id: asi_id)
   end    
     
+  def friendly_find(id)
+      User.friendly.find(id)
+  end
     
 end

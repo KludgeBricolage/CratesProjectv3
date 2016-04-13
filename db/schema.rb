@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160410122139) do
+ActiveRecord::Schema.define(version: 20160413132917) do
 
   create_table "active_statuses", force: :cascade do |t|
     t.string "name", limit: 255
@@ -58,12 +58,14 @@ ActiveRecord::Schema.define(version: 20160410122139) do
     t.decimal  "price",                          precision: 11, scale: 2
     t.integer  "category_id",      limit: 4
     t.integer  "active_status_id", limit: 4,                              default: 1
+    t.string   "slug",             limit: 255
   end
 
   add_index "crates", ["active_status_id"], name: "index_crates_on_active_status_id", using: :btree
   add_index "crates", ["category_id"], name: "index_crates_on_category_id", using: :btree
   add_index "crates", ["locations_id"], name: "index_crates_on_locations_id", using: :btree
   add_index "crates", ["qualities_id"], name: "index_crates_on_qualities_id", using: :btree
+  add_index "crates", ["slug"], name: "index_crates_on_slug", unique: true, using: :btree
   add_index "crates", ["states_id"], name: "index_crates_on_states_id", using: :btree
   add_index "crates", ["user_id", "created_at"], name: "index_crates_on_user_id_and_created_at", using: :btree
   add_index "crates", ["user_id"], name: "index_crates_on_user_id", using: :btree
@@ -95,10 +97,25 @@ ActiveRecord::Schema.define(version: 20160410122139) do
     t.boolean  "is_pin",                          default: false
     t.boolean  "is_lock",                         default: false
     t.datetime "last_comment_time",                               null: false
+    t.string   "slug",              limit: 255
   end
 
   add_index "forum_posts", ["forum_category_id"], name: "index_forum_posts_on_forum_category_id", using: :btree
+  add_index "forum_posts", ["slug"], name: "index_forum_posts_on_slug", unique: true, using: :btree
   add_index "forum_posts", ["user_id"], name: "index_forum_posts_on_user_id", using: :btree
+
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string   "slug",           limit: 255, null: false
+    t.integer  "sluggable_id",   limit: 4,   null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope",          limit: 255
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "group_memberships", force: :cascade do |t|
     t.integer  "member_id",       limit: 4,   null: false
@@ -125,8 +142,8 @@ ActiveRecord::Schema.define(version: 20160410122139) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.string   "name",       limit: 255
-    t.string   "long",       limit: 255
     t.string   "lat",        limit: 255
+    t.string   "lng",        limit: 255
   end
 
   create_table "pictures", force: :cascade do |t|
@@ -272,9 +289,11 @@ ActiveRecord::Schema.define(version: 20160410122139) do
     t.string   "reset_digest",        limit: 255
     t.datetime "reset_sent_at"
     t.integer  "user_status_id",      limit: 4,   default: 1
+    t.string   "slug",                limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["slug"], name: "index_users_on_slug", unique: true, using: :btree
   add_index "users", ["user_status_id"], name: "index_users_on_user_status_id", using: :btree
 
   add_foreign_key "admins", "users"

@@ -13,7 +13,7 @@ class ForumPostsController < ApplicationController
     end
     
     def show
-        @forum_post = ForumPost.find(params[:id])
+        @forum_post = ForumPost.friendly.find(params[:id])
         @forum_comment =  @forum_post.forum_comments.build
         @forum_comments = @forum_post.forum_comments.all
     end
@@ -77,7 +77,7 @@ class ForumPostsController < ApplicationController
     
     private
     def forum_post_params
-        params.require(:forum_post).permit(:title,:description,:forum_category_id)
+        params.require(:forum_post).permit(:title,:description,:forum_category_id, :slug)
     end
     
 end
