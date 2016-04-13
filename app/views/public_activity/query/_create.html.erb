@@ -1,9 +1,9 @@
-
 posted a query
 
 <%if activity.trackable.crate || activity.trackable.crate.active_status_id != 1%>
  <%=link_to activity.trackable.title, crate_path(activity.trackable.crate, anchor: activity.trackable.title )%> 
     on your <%=link_to activity.trackable.crate.name,activity.trackable.crate%>
+    &nbsp;&nbsp;<%=time_ago_in_words(activity.created_at)%> ago
 <%else%>
  on a crate which has been removed
 <%end%>

@@ -1,6 +1,7 @@
 <% content_for :title, 'Edit Profile' %>
+<h2></h2>
 <div class="ui center aligned grid">
-    <div class="column">
+    <div class="seven wide column">
         <%= form_for(@profile,url:{ :controller => 'profiles', :action => 'update'},html: {class: "ui large segment form error"})  do |f| %>
         <%= render 'shared/form_error_messages', object: f.object%>
             <div class="ui horizontal divider">Create a Profile</div>

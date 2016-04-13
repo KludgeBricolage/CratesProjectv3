@@ -23,6 +23,7 @@
 
 .bx-wrapper img {
 	max-width: 100%;
+    min-width: 300px;
 	display: block;
 }
 
@@ -203,17 +204,20 @@
 	padding: 10px;
 }
 
-@media only screen and (max-width : 800px){
+@media only screen and (max-width : 770px){
     .bx-viewport{
-        min-width: 300px;
+        min-width: 300px !important;
         height: 350px;
         
     }    
-    
-}
-
-@media only screen and (max-width : 770px){
     .bxslider > li {
-        margin-left: -40px;
+        position: relative;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+}
+@media only screen and (max-width : 430px){
+    .bxslider > li {
+        margin-left: -40px !important;
     }
 }

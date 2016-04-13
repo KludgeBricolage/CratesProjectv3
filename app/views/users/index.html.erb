@@ -1,3 +1,5 @@
+<h2></h2>
+<div class="ui container">
 <h1>All Users</h1>               
 <div class="ui items">        
     <%@users.each do |user|%>
@@ -5,4 +7,5 @@
             <div class="segment content"><%= render 'shared/user_info', user: user %></div>
         </div> 
     <%end%>
+</div>
 </div>

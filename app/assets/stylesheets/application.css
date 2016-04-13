@@ -25,8 +25,9 @@ da{
   outline: solid #f00 1px !important;
 }
 
-vanilla {
+.vanilla {
   background-color : rgb(243,226,199) !important;
+  color: black;
 }
 
 .pusher {
@@ -102,13 +103,20 @@ img.display{
     padding: 1em;
 }
 
+.seven.wide.column{
+    min-width: 300px !important;
+}
+
 @media only screen and (max-width : 800px){
 
     #items > #item{
         min-width: 30.67%;
         margin: 1% 1% 0 1%;
     }
-    
+    #footer > img {
+        margin-right: 10px;
+    }
+
 }
 
 @media only screen and (max-width : 480px){
@@ -116,8 +124,20 @@ img.display{
     #items > #item{
         min-width: 46%;
         margin: 1% 1% 0 1%;
+        word-break: break-all;
     }
     
+}
+
+
+#footer {
+    height: 63px;
+    
+}
+#footer > p {
+    margin-top: -26px;
+    margin-left: 10px;
+    font-size: .9em
 }
 
 #error{

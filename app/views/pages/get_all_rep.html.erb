@@ -1,0 +1,19 @@
+<h2></h2>
+<div class="ui container">
+    <div class="ui divided relaxed list">
+        <h1>Query Replies</h1>
+        <%if @r_noti.length == 0%>
+        <h1></h1>
+        Nothing to show
+        <%else%>
+        
+         <%@r_noti.each do |notif| %>
+              <div class="item">
+                <div class="content">
+                  <div class="description"><%=notif.owner.alias%> <%=render_activity notif%></div>
+                </div>
+              </div>
+              <%end%>     
+           </div>
+    <%end%>
+</div>

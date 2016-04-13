@@ -1,9 +1,6 @@
 <%=provide(:title, @user.alias + " 's Garage ") %>
-
-   <div class="ui container">
-    
-     
-         
+<h2></h2>
+   <div class="ui container">     
            <div class="ui card">
          <div class="extra content">
              <div class="ui right floated">
@@ -39,40 +36,25 @@
             </h3>
           </div>
           <% if logged_in?%>
-               <%unless (is_rated?(@user) || current_user == @user) %>
-          <div class="ui two bottom attached basic buttons">
+               <%if (is_rated?(@user) || @user == current_user ) %>
+              <div class="ui bottom attached basic button">
+                  <%=link_to 'Unrate', unrate_path(id: @user.id), method: 'post' %>
+              </div> 
+               <%else%>
+              <div class="ui two bottom attached basic buttons">
               <div class="ui button"><%=link_to 'Rate User',:controller =>'users',:action => 'show', :rated_point => '1'%> <i class="green thumbs outline up icon"></i></div>
               <div class="ui button"><%=link_to 'Rate User',:controller =>'users',:action => 'show', :rated_point => '2'%>
               <i class="red thumbs outline down icon"></i>
               </div>
-          </div>
+              </div>
                <%end%>
           <% end %>
        </div>      
-    
-        
-              
+
        <%=render 'crates/crate_collection', crates: @act_crates %>
-   
-     
-    
-     
     </div>
-
-
-
 <div class="ui closable basic modal" id="reportModal">
     <%=render 'shared/report_form', user: @user %>
 </div>    
 
 
-
-<script>
-     $('#reportBtn').click(function(e){
-         e.stopPropagation();
-        $('#reportModal')
-            .modal('show')
-            .modal('setting','closable',true)
-        ;
-    });
-</script>

@@ -17,13 +17,13 @@
         <%=render 'layouts/sidebar' if logged_in?%>
     </div>
     <div class="pusher">
-    <div class="ui top attached menu">
-        
+    <div class="ui vanilla top attached borderless menu">
+       <a class="item"  href="/"><%=image_tag("/images/logo.png", class: 'ui centered mini image')%></a>
         <%if logged_in?%>
         <a class="item"  id="side_btn"><i class="sidebar icon"></i>Menu</a>
-        <a class="item" href="/"><b><i class="home icon"></i>Home</b></a>
         <div class="right menu">
         <%else%>
+        
         <div class="right menu">
         <a class="item"  href="/login"><i class="user icon"></i>Login</a>
         <a class="item"  href="/community"><i class="comments outline icon"></i></a>
@@ -44,14 +44,14 @@
       
       <%=yield%>    
      </div>
-         
-         </div>
-  
+    <h1></h1>
+    <h1></h1>
+     
+     
+     </div>
     
-    <h1></h1>
-    <h1></h1>
     </div>
-    
+    <%=render 'layouts/footer'%>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
      <script>
         $("#loader").css("height", $(document).height() );
@@ -74,7 +74,18 @@
             e.stopPropagation();
             $('#advSearch').toggleClass('active')
          });
-         
+         $('.message .close')
+            .on('click', function() {
+            $(this)
+                .closest('.message')
+                .transition('fade');
+          });
+          $('#reportBtn').click(function(e){
+            e.stopPropagation();
+            $('#reportModal')
+                .modal('show')
+                .modal('setting','closable',true);
+          });
     </script>
 </body>
 </html>

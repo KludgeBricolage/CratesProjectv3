@@ -1,7 +1,9 @@
+<% provide(:title, @forum_post.title) %>
+<h2></h2>
 <div class="ui container">
     <h1 class="header">
         <div class="ui large breadcrumb">
-          <%=link_to 'Forum', community_path , class: 'section'%>
+          <%=link_to 'Discussion Board', community_path , class: 'section'%>
           <div class="divider"> / </div>
           <%=link_to fcat(@forum_post.forum_category_id).name, @fcat , class: 'section'%>
           <div class="divider"> / </div>
@@ -10,7 +12,10 @@
     </h1>
     <div class="ui raised segments">
        <div class="ui horizontal segments">
-           <div class="ui segment"><p><%=@forum_post.title%></p></div>
+           <div class="ui segment"><p>
+            <%= '<i class="pin icon"></i>'.html_safe if @forum_post.is_pin?%>
+            <%= '<i class="lock icon"></i>'.html_safe if @forum_post.is_lock?%>
+           <%=@forum_post.title%></p></div>
            <div class="ui segment">
                By <%=link_to target_user(@forum_post.user_id).alias, @target_user%>
            </div>
@@ -19,7 +24,7 @@
                <%if @forum_post.user == @current_user %>
                 <div class="ui label"><%=link_to 'Edit', edit_forum_post_path(@forum_post.id)%></div>
                <%end%>
-               <div class="ui label"><%=link_to 'Subscribe', change_subsc_path(id: @forum_post.id)%></div>
+               <div class="ui label"><%=link_to 'Subscription', change_subsc_path(id: @forum_post.id)%></div>
                <%if admin?%>
                <div class="ui label"><%=link_to 'Pin', change_pin_path(id: @forum_post.id)%></div>
                <div class="ui label"><%=link_to 'Lock', change_lock_path(id: @forum_post.id)%></div>

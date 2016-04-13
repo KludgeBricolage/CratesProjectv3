@@ -60,7 +60,7 @@ module SessionsHelper
   end
         
   def is_admin?
-    #current_user.admin? unless current_user == nil
+    Admin.where(user_id: current_user.id).exists? unless current_user == nil
   end
     
 end

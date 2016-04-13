@@ -22,6 +22,16 @@ class UsersController < ApplicationController
       @act_crates =  Crate.where(["user_id = ? and active_status_id = ?", @user.id , 1])
   end
     
+  def unrate
+      @user = User.find_by(id: params[:id])
+      if UserRating.where(user_id: current_user.id, rated_person: @user.id)
+      UserRating.where(user_id: current_user.id, rated_person: @user.id).first.destroy
+      else
+      redirect_to @user, notice: 'Error'
+      end
+      redirect_to @user, notice: 'User unrated'
+  end
+    
   def correct_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless  current_user?(@user)

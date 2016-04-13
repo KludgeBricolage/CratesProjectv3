@@ -53,25 +53,33 @@ p, #cratePartial{
 #sortList > li{
     display: inline;
 }
-@media only screen and (max-width : 768px){
-    #searchMenu{
-        display: block;
-        margin-left: 16px;
-    }
-    #searchMenu > i{
-        font-size: 1.5em;
-    }
-    #advSearch{
-        display: none;
-    }
-    #advSearch.active{
-        display: block;
-        margin-top: 20px;
-    }
-    #searchLabel{
-        display: none;
-    }
-    #sortList{
-    margin-top: 0px !important;
+.meta {
+    word-break: break-all;
 }
+
+@media only screen and (max-width : 800px){
+        #searchMenu{
+            display: block;
+            margin-left: 16px;
+        }
+        #searchMenu > i{
+            font-size: 1.5em;
+        }
+        #advSearch{
+            display: none;
+        }
+        #advSearch.active{
+            display: block;
+            margin-top: 20px;
+        }
+        #searchLabel{
+            display: none;
+        }
+        #sortList{
+        margin-top: 0px !important;
+    }
+    #newCrate{
+    width: 300px !important;
+    }
 }
+

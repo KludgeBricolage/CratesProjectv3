@@ -1,6 +1,7 @@
-<div class="ui card">
+
+<div class="ui inline card" style="width:300px">
   <div class="image">
-      <%=link_to(image_tag(user.avatar.url), user) %>
+      <%=link_to(image_tag(user.avatar.url(:medium)), user) %>
   </div>
   <div class="content">
     <div class="header"><%=link_to user.alias, user %></div>
@@ -11,6 +12,5 @@
     </div>
   </div>
   <div class="extra content">
-  wewe
   </div>
 </div>

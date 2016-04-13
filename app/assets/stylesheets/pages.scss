@@ -37,3 +37,20 @@
     border-bottom-style: solid;
     border-color: darkgray;
 }
+
+@media only screen and (max-width : 800px){
+    .prof.ui.center.aligned.grid{
+        width: 300px !important;     
+    }
+}
+
+
+#bt{
+    font-size: 10em;
+    text-align: center;
+}
+#bd{
+    margin-top: -150px;
+    font-size: 4em;
+    text-align: center;
+}

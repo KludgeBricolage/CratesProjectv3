@@ -11,6 +11,8 @@
      
     <%=link_to activity.trackable.query.title, crate_path(activity.trackable.query.crate, anchor: activity.trackable.query.title)%>
     posted on <%=link_to activity.trackable.query.crate.name, activity.trackable.query.crate%>
+    &nbsp;&nbsp;<%=time_ago_in_words(activity.created_at)%> ago
+    
 <%else%>
 posted a query on a crate which has been removed
 <%end%>

@@ -18,9 +18,18 @@ Rails.application.routes.draw do
     get 'change_pin' => 'forum_posts#change_pin'
     get 'change_lock' => 'forum_posts#change_lock'
     post 'new_comment' => 'forum_comments_controller#create', as: 'new_comment'
+    post 'change_status' => 'pages#change_status'
     get 'crate_manager' => 'pages#crate_manager'
+    post 'unrate' => 'users#unrate'
+     
+    
     get 'change_subsc' => 'forum_posts#change_subsc'
     post 'deactivate_user' => 'users#deactivate'
+    
+    get 'q_noti' => 'pages#get_all_cq'
+    get 'r_noti' => 'pages#get_all_rep'
+    get 'fp_noti' => 'pages#get_all_fp'
+    
     resources :users do
         resources :profiles
     end

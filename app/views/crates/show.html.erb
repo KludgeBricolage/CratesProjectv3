@@ -16,7 +16,7 @@
                <div class="ui container" id="bxSlCn">
                     <ul class="bxslider">
                        <%@images.each do |pic| %>
-                        <li><%= image_tag pic.image.url(:medium)%></li>
+                        <li><%= image_tag pic.image.url(:medium), class:'bximg'%></li>
                         <% end %>                        
                     </ul>                    
                 </div>
@@ -51,14 +51,12 @@
             </div>
           </div>    
         </div>        
-                <%if logged_in? && is_owner?(@crate.user.id)%>
+            <%if logged_in? && is_owner?(@crate.user.id)%>
                     <div class="ui segment">
                         <div class="ui label"><%= link_to "Delete", @crate, method: :delete,data: { confirm: "You sure?" } %></div>
                         <div class="ui label"><%= link_to "Edit", edit_crate_path%></div>
                     </div>
-                <%end%>
-            
-            
+            <%end%>
             
             <div class="ui threaded comments">
             <h3 class="ui dividing header">Queries</h3>    
@@ -71,7 +69,7 @@
                 <div class="content">
                   <%=link_to user.alias, user, class:'author'%>
                   asked
-                  <%= query.title %>
+                  <b><%= query.title %></b>
                   <div class="metadata">
                     <span class="date"><%=time_ago_in_words(query.created_at)%> ago</span>
                   </div>

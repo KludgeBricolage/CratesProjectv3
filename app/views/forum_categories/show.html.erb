@@ -1,3 +1,4 @@
+<%=provide(:title, @fcat.name ) %>
 <h2></h2>
 <div class="ui container">   
         <table class="ui single line table">
@@ -6,7 +7,7 @@
             <th>  
                 <h2 class="header">
                     <div class="ui large breadcrumb">
-                      <%=link_to 'Forum', community_path , class: 'section'%>
+                        <%=link_to 'Discussion Boards', community_path , class: 'section'%>
                       <div class="divider"> / </div>
                       <div class="active section"><%=@fcat.name%></div>
                     </div>

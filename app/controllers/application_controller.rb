@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
-  #rescue_from ::ActiveRecord::RecordNotFound, with: :dont_url_manipulate
-  #rescue_from ::ActiveRecord::InvalidForeignKey, with: :dont_url_manipulate
+  rescue_from ::ActiveRecord::RecordNotFound, with: :dont_url_manipulate
+  rescue_from ::ActiveRecord::InvalidForeignKey, with: :dont_url_manipulate
 
   protect_from_forgery with: :exception
   include SessionsHelper
@@ -16,7 +16,8 @@ class ApplicationController < ActionController::Base
 
   
   def check_auth
-        unless admin?
+        logged_in_user
+        unless is_admin?
             flash[:error] = "Invalid Action"
             redirect_to root_url
         end

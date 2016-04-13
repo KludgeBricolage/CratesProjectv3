@@ -34,10 +34,16 @@ class ForumPostsController < ApplicationController
         @subscription = Subscription.where(user_id: current_user.id, forum_post_id: params[:id]).first
         if @subscription != nil
             @subscription.toggle!(:is_active)
-            redirect_to @forum_post, notice: 'You have unsubscibed from this post'
+            if @subscription.is_active?
+                message = "Subscribed to Post"
+            else
+                message = "Unsubscribed to Post"
+            end
+            
+            redirect_to @forum_post, notice: message
         else
             Subscription.create(forum_post: @forum_post, user: current_user)
-            redirect_to @forum_post, notice: 'You have subscibed from this post'
+            redirect_to @forum_post, notice: 'Toggled Subscription'
         end
     end
     

@@ -1,4 +1,5 @@
-<h3></h3>        
+
+<h2></h2>
 <div class="profile container">
       <div class="ui centered grid" style="margin:20px">
         <div class="row">
@@ -18,9 +19,9 @@
                           </span>
                         </div>
                         <div class="description">
-                            <p><%=link_to 'Manage Crates', crate_manager_path %></p>
-                            <p>Info 2</p>
-                            <p>Info 3</p>
+                            <p></p>
+                            <p></p>
+                            <p></p>
                         </div>
                     </div>
                   </div>
@@ -31,32 +32,73 @@
     </div>
      
      <div class="ui container">
-         <ul>
-             <div class="header">Crates</div>
-              <li>Active: <%=@acc%></li>
-              <li>Inactive: <%=@iac%></li>
-              <li>Archived: <%=@fcc%></li>
-              <li>Total: <%=@acc + @iac + @fcc%> </li>
-           </ul>
-           <ul>
-              <header>Crate Queries</header>
-               <%@q_noti.each do |notif| %>               
-                   <li><%=notif.owner.alias%> <%=render_activity notif%></li>
-               <%end%>
-           </ul>
-           <ul>
-               <header>Query Replies</header>
-               <%@r_noti.each do |notif| %>               
-                   <li><%=notif.owner.alias%> <%=render_activity notif%></li>
-               <%end%>
-           </ul>
-           <ul>
-              <header>Forum Notifications</header>
-               <%@f_noti.each do |notif| %>               
-                   <li><%=notif.owner.alias%> <%=render_activity notif%></li>
-               <%end%>
-           </ul>
-     </div>
+         <h2></h2>
+          <div class="ui segment container">
+           <div class="ui horizontal list">
+            <h3>Crates item count <%=link_to '(Manage Crates)', crate_manager_path %></h3>
+                  <div class="item">  
+                    <div class="content">
+                      <div class="header">Active</div>
+                      <%=@acc%>&nbsp;
+                    </div>
+                  </div>
+              
+              
+              <div class="item">
+                <div class="content">
+                  <div class="header">Inactive</div>
+                   <%=@iac%>&nbsp;
+                </div>
+              </div>
+              
+              <div class="item">
+                <div class="content">
+                  <div class="header">Archived</div>
+                  <%=@fcc%>&nbsp;
+                </div>
+              </div>   
+              <div class="item">
+                <div class="content">
+                  <div class="header">Total</div>
+                  <%=@fcc+@iac+@acc%>&nbsp;
+                </div>
+              </div>
+             </div>
+             </div>
+           
+           <div class="ui divided list segment container">
+             <header>Crate Queries&nbsp;<%=link_to "(All)", q_noti_path%></header>
+              <%@q_noti.each do |notif| %>
+              <div class="item">
+                <div class="content">
+                  <div class="description"><%=notif.owner.alias%> <%=render_activity notif%></div>
+                </div>
+              </div>
+              <%end%>
+           </div>
+           
+            <div class="ui divided list segment container">
+             <header>Query Replies&nbsp;<%=link_to "(All)", r_noti_path%></header>
+              <%@r_noti.each do |notif| %>
+              <div class="item">
+                <div class="content">
+                  <div class="description"><%=notif.owner.alias%> <%=render_activity notif%></div>
+                </div>
+              </div>
+              <%end%>
+           </div>
+                
+            <div class="ui relaxed divided list segment container">
+             <header>Forum Notifications&nbsp;<%=link_to "(All)", fp_noti_path%></header>
+              <%@f_noti.each do |notif| %>
+              <div class="item">
+                <div class="content">
+                  <div class="description"><%=notif.owner.alias%> <%=render_activity notif%></div>
+                </div>
+              </div>
+              <%end%>
+           </div>
+</div>
       
    
 

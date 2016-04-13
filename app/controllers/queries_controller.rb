@@ -13,7 +13,6 @@ class QueriesController < ApplicationController
             redirect_to @crate
         end
     end
-    
     private
     def query_params
         params.require(:query).permit(:title,:description)

@@ -1,14 +1,14 @@
 class ReportsController < ApplicationController
     before_action :check_auth, only: [:show,:destroy,:index]
-    
+    before_action :logged_in_user, only: [:create]
     def create
+        @user = User.find_by(id: params[:report][:reported_id])
         @report = Report.new(report_params)
         if @report.save!
             @report.set_user!(current_user)
-            flash[:success] = 'Report has been submitted'
-            redirect_to '/'
+            redirect_to @user, notice: 'Report Submitted'
         else
-            render 'new'
+            redirect_to @user, notice: 'Report Failed'
         end
     end    
     

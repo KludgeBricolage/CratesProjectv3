@@ -5,11 +5,10 @@ class PagesController < ApplicationController
         @acc = search_byst(current_user.id, 1).size or 0
         @iac = search_byst(current_user.id, 2).size or 0
         @fcc = search_byst(current_user.id, 3).size or 0
-        
-        @r_noti = PublicActivity::Activity.where( trackable: get_replies).order("created_at desc")
-        @q_noti = PublicActivity::Activity.where( trackable: get_c_queries).order("created_at desc")
-        @f_noti = PublicActivity::Activity.where( trackable: get_f_queries).order("created_at desc")
-        
+        @tcc = Crate.where(user: current_user).count or 0
+        @r_noti = PublicActivity::Activity.where( trackable: get_replies).order("created_at desc").limit(10)
+        @q_noti = PublicActivity::Activity.where( trackable: get_c_queries).order("created_at desc").limit(10)
+        @f_noti = PublicActivity::Activity.where( trackable: get_f_queries).order("created_at desc").limit(10)
         #get notifications of your forum posts
     end     
     
@@ -34,6 +33,20 @@ class PagesController < ApplicationController
         
     end
     
+    
+    def get_all_cq
+        @q_noti = PublicActivity::Activity.where( trackable: get_c_queries).order("created_at desc")
+    end
+    
+    def get_all_rep
+        @r_noti = PublicActivity::Activity.where( trackable: get_replies).order("created_at desc")
+    end
+    
+    def get_all_fp
+        @f_noti = PublicActivity::Activity.where( trackable: get_f_queries).order("created_at desc")
+    end
+    
+    
     private
     def search_byst(us_id,st_id)
         Crate.where(["user_id = ? and active_status_id = ?", us_id , st_id])
@@ -46,7 +59,6 @@ class PagesController < ApplicationController
     def get_c_queries
         c = Query.where(crate: current_user.crates)
     end
-    
     
     def get_replies
         q = Query.where(id: current_user.replies.map {|c| c.query_id}.uniq)
@@ -77,6 +89,4 @@ class PagesController < ApplicationController
         b = ForumComment.where(forum_post: current_user.forum_posts).where.not(user: current_user)
         return a.concat(b)
     end
-    
-    
 end
