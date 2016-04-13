@@ -36,17 +36,18 @@
             </h3>
           </div>
           <% if logged_in?%>
-               <%if (is_rated?(@user) || @user == current_user ) %>
-              <div class="ui bottom attached basic button">
-                  <%=link_to 'Unrate', unrate_path(id: @user.id), method: 'post' %>
-              </div> 
+               <%if is_rated?(@user) %>
+                  <div class="ui bottom attached basic button">
+                      <%=link_to 'Unrate', unrate_path(id: @user.id), method: 'post' %>
+                  </div>
                <%else%>
-              <div class="ui two bottom attached basic buttons">
-              <div class="ui button"><%=link_to 'Rate User',:controller =>'users',:action => 'show', :rated_point => '1'%> <i class="green thumbs outline up icon"></i></div>
-              <div class="ui button"><%=link_to 'Rate User',:controller =>'users',:action => 'show', :rated_point => '2'%>
-              <i class="red thumbs outline down icon"></i>
-              </div>
-              </div>
+                  <div class="ui two bottom attached basic buttons">
+                      <div class="ui button"><%=link_to 'Rate User', rate_path(id: @user.id, rp: '1'), method:'post'%> 
+                      <i class="green thumbs outline up icon"></i></div>    
+                  <div class="ui button"><%=link_to 'Rate User', rate_path(id: @user.id, rp: '2'), method:'post'%>
+                  <i class="red thumbs outline down icon"></i>
+                  </div>
+                  </div>
                <%end%>
           <% end %>
        </div>      

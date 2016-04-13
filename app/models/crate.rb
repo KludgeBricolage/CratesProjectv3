@@ -1,6 +1,7 @@
 class Crate < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
+    
   belongs_to :user
   has_one :category
   has_one :state

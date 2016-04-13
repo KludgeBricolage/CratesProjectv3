@@ -46,12 +46,12 @@ class CratesController < ApplicationController
     end
     
     def edit
-        @crate = Crate.find(params[:id])
+        @crate = friendly_find(params[:id])
         @pics = @crate.pictures
     end
     
     def update
-        @crate = Crate.find(params[:id])
+        @crate = friendly_find(params[:id])
         @pics = @crate.pictures
         if @crate.update_attributes(crate_params)
             if params[:pictures]
@@ -75,7 +75,7 @@ class CratesController < ApplicationController
     end
     
     def show
-        @crate = Crate.friendly.find(params[:id])
+        @crate = friendly_find(params[:id])
         @images = @crate.pictures
         @contact = @crate.user.profile.phone_number        
         @query = @crate.queries.build
@@ -94,9 +94,14 @@ class CratesController < ApplicationController
     end
     
     def check_user_status
-        @user = Crate.find(params[:id]).user
+        @user = friendly_find(params[:id]).user
         if @user.user_status_id > 1
             redirect_to root_url, notice: "The User of this crate has been inactivated"
         end
     end
+    
+    def friendly_find(id)
+        Crate.friendly.find(id)
+    end
+    
 end

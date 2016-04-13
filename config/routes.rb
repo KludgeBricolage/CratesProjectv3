@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     post 'change_status' => 'pages#change_status'
     get 'crate_manager' => 'pages#crate_manager'
     post 'unrate' => 'users#unrate'
-     
+    post 'rate' => 'users#rate'
     
     get 'change_subsc' => 'forum_posts#change_subsc'
     post 'deactivate_user' => 'users#deactivate'

@@ -16,9 +16,6 @@ class UsersController < ApplicationController
   def show
       @user = friendly_find(params[:id])
       @report = Report.new
-      if (params.has_key?(:rated_point) && params.has_key?(:id))
-        current_user.user_ratings.new(rating_id: params[:rated_point],rated_person: params[:id]).save unless is_rated?(params[:id])
-      end
       @act_crates =  Crate.where(["user_id = ? and active_status_id = ?", @user.id , 1])
   end
     
@@ -31,6 +28,17 @@ class UsersController < ApplicationController
       end
       redirect_to @user, notice: 'User unrated'
   end
+    
+  def rate
+      @user = friendly_find(params[:id])
+      if params.has_key?(:rp)
+          current_user.user_ratings.new(rating_id: params[:rp],rated_person: @user.id).save unless is_rated?(params[:id])
+      else
+      redirect_to @user, notice: 'Error'
+      end
+      redirect_to @user, notice: 'User rated'
+  end
+    
     
   def correct_user
       @user = friendly_find(params[:id])

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160413132917) do
+ActiveRecord::Schema.define(version: 20160413141150) do
 
   create_table "active_statuses", force: :cascade do |t|
     t.string "name", limit: 255
@@ -74,7 +74,10 @@ ActiveRecord::Schema.define(version: 20160413132917) do
     t.string   "name",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug",       limit: 255
   end
+
+  add_index "forum_categories", ["slug"], name: "index_forum_categories_on_slug", unique: true, using: :btree
 
   create_table "forum_comments", force: :cascade do |t|
     t.string   "comment",       limit: 255

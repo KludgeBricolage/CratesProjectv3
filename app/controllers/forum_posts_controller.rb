@@ -3,7 +3,7 @@ class ForumPostsController < ApplicationController
     before_action :correct_f_user, only: [:destroy, :edit, :update]
     
     def correct_f_user
-      @user = User.find(ForumPost.find(params[:id]).user_id)
+      @user = User.find(friendly_find(params[:id]).user_id)
       redirect_to(root_url) unless  current_user?(@user)
     end
     
@@ -13,7 +13,7 @@ class ForumPostsController < ApplicationController
     end
     
     def show
-        @forum_post = ForumPost.friendly.find(params[:id])
+        @forum_post = friendly_find(params[:id])
         @forum_comment =  @forum_post.forum_comments.build
         @forum_comments = @forum_post.forum_comments.all
     end
@@ -30,7 +30,7 @@ class ForumPostsController < ApplicationController
     end
     
     def change_subsc
-        @forum_post = ForumPost.find(params[:id])
+        @forum_post = friendly_find(params[:id])
         @subscription = Subscription.where(user_id: current_user.id, forum_post_id: params[:id]).first
         if @subscription != nil
             @subscription.toggle!(:is_active)
@@ -48,25 +48,25 @@ class ForumPostsController < ApplicationController
     end
     
     def edit
-        @forum_post = ForumPost.find(params[:id])
+        @forum_post = friendly_find(params[:id])
     end
     
     def change_pin
-        @forum_post = ForumPost.find(params[:id])
+        @forum_post = friendly_find(params[:id])
         @forum_post.toggle!(:is_pin)
         flash[:success] = 'Pin toggled'
         redirect_to @forum_post
     end
     
     def change_lock
-        @forum_post = ForumPost.find(params[:id])
+        @forum_post = friendly_find(params[:id])
         @forum_post.toggle!(:is_lock)
         flash[:success] = 'Lock toggled'
         redirect_to @forum_post
     end
     
      def update
-        @forum_post = ForumPost.find(params[:id])
+        @forum_post = friendly_find(params[:id])
         if  @forum_post.update_attributes(forum_post_params)
             flash[:success] = 'Post updated'
             redirect_to @forum_post
@@ -78,6 +78,10 @@ class ForumPostsController < ApplicationController
     private
     def forum_post_params
         params.require(:forum_post).permit(:title,:description,:forum_category_id, :slug)
+    end
+    
+    def friendly_find(id)
+       ForumPost.friendly.find(id)
     end
     
 end
