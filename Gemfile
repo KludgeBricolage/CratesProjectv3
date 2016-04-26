@@ -29,7 +29,11 @@ gem 'ransack', '~> 1.7'
 gem 'groupify'
 #pretty urls
 gem 'friendly_id', '~> 5.1.0'
-
+#social login
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+#share
+gem 'social-share-button'
 #pagination
 gem 'kaminari', '0.15.1'
 #feed

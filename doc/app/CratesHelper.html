@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8">
+
+<title>module CratesHelper - Rails Application Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-catgory">#catgory</a>
+    
+    <li ><a href="#method-i-crate_quality">#crate_quality</a>
+    
+    <li ><a href="#method-i-delmited_price">#delmited_price</a>
+    
+    <li ><a href="#method-i-find_state_color">#find_state_color</a>
+    
+    <li ><a href="#method-i-find_status">#find_status</a>
+    
+    <li ><a href="#method-i-locate">#locate</a>
+    
+    <li ><a href="#method-i-show_thumb">#show_thumb</a>
+    
+    <li ><a href="#method-i-simplify">#simplify</a>
+    
+    <li ><a href="#method-i-tag_links">#tag_links</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-CratesHelper">
+  <h1 id="module-CratesHelper" class="module">
+    module CratesHelper
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-catgory" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">catgory</span><span
+            class="method-args">(c)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="catgory-source">
+            <pre><span class="ruby-comment"># File app/helpers/crates_helper.rb, line 27</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">catgory</span>(<span class="ruby-identifier">c</span>)
+    <span class="ruby-constant">Category</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">c</span>).<span class="ruby-identifier">name</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-crate_quality" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">crate_quality</span><span
+            class="method-args">(quality_id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="crate_quality-source">
+            <pre><span class="ruby-comment"># File app/helpers/crates_helper.rb, line 15</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">crate_quality</span>(<span class="ruby-identifier">quality_id</span>)
+    <span class="ruby-constant">Quality</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">quality_id</span>).<span class="ruby-identifier">name</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-delmited_price" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">delmited_price</span><span
+            class="method-args">(price)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="delmited_price-source">
+            <pre><span class="ruby-comment"># File app/helpers/crates_helper.rb, line 23</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">delmited_price</span>(<span class="ruby-identifier">price</span>)
+    <span class="ruby-identifier">number_with_delimiter</span>(<span class="ruby-identifier">price</span>, <span class="ruby-identifier">delimiter</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;,&#39;</span>, <span class="ruby-identifier">separator</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;.&#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-find_state_color" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">find_state_color</span><span
+            class="method-args">(status_id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="find_state_color-source">
+            <pre><span class="ruby-comment"># File app/helpers/crates_helper.rb, line 11</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">find_state_color</span>(<span class="ruby-identifier">status_id</span>)
+    <span class="ruby-constant">State</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">status_id</span>).<span class="ruby-identifier">color</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-find_status" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">find_status</span><span
+            class="method-args">(status_id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="find_status-source">
+            <pre><span class="ruby-comment"># File app/helpers/crates_helper.rb, line 3</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">find_status</span>(<span class="ruby-identifier">status_id</span>)
+     <span class="ruby-constant">State</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">status_id</span>).<span class="ruby-identifier">status</span>
+ <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-locate" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">locate</span><span
+            class="method-args">(locate_id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="locate-source">
+            <pre><span class="ruby-comment"># File app/helpers/crates_helper.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">locate</span>(<span class="ruby-identifier">locate_id</span>)
+    <span class="ruby-constant">Location</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">locate_id</span>).<span class="ruby-identifier">name</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-show_thumb" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">show_thumb</span><span
+            class="method-args">(pic)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="show_thumb-source">
+            <pre><span class="ruby-comment"># File app/helpers/crates_helper.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">show_thumb</span>(<span class="ruby-identifier">pic</span>)
+    <span class="ruby-identifier">pic</span>.<span class="ruby-identifier">image</span>.<span class="ruby-identifier">url</span>(<span class="ruby-value">:thumb</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-simplify" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">simplify</span><span
+            class="method-args">(object, lengt)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="simplify-source">
+            <pre><span class="ruby-comment"># File app/helpers/crates_helper.rb, line 31</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">simplify</span>(<span class="ruby-identifier">object</span>, <span class="ruby-identifier">lengt</span>)
+    <span class="ruby-identifier">simple_format</span>(<span class="ruby-identifier">truncate</span>(<span class="ruby-identifier">object</span>, <span class="ruby-identifier">length</span><span class="ruby-operator">:</span> <span class="ruby-identifier">lengt</span>))
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-tag_links" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">tag_links</span><span
+            class="method-args">(tags)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="tag_links-source">
+            <pre><span class="ruby-comment"># File app/helpers/crates_helper.rb, line 7</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">tag_links</span>(<span class="ruby-identifier">tags</span>)
+    <span class="ruby-identifier">tags</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;,&quot;</span>).<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">tag</span><span class="ruby-operator">|</span> <span class="ruby-identifier">link_to</span> <span class="ruby-identifier">tag</span>.<span class="ruby-identifier">strip</span>, <span class="ruby-identifier">tag_path</span>(<span class="ruby-identifier">tag</span>.<span class="ruby-identifier">strip</span>) }.<span class="ruby-identifier">uniq</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;, &quot;</span>) 
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

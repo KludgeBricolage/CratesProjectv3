@@ -2,11 +2,10 @@ class User < ActiveRecord::Base
     extend FriendlyId
     friendly_id :alias, use: :slugged
     
-    #interruptors
+    #callbacks
     before_save :down_email
     before_create :create_activation_digest
-    has_secure_password
-    
+    has_secure_password(validations: false)
     #groupify
     groupify :group_member
     
@@ -17,11 +16,11 @@ class User < ActiveRecord::Base
     has_one :user_status
     has_many :reportables
     has_many :reports, through: :reportables
-    has_many :forum_posts
-    has_many :forum_comments
-    has_many :queries
-    has_many :replies
-    has_many :subscriptions, through: :forum_posts
+    has_many :forum_posts , dependent: :destroy
+    has_many :forum_comments , dependent: :destroy
+    has_many :queries , dependent: :destroy
+    has_many :replies, dependent: :destroy
+    has_many :subscriptions, dependent: :destroy
     
     #avatar
     has_attached_file :avatar, styles: {
@@ -32,13 +31,28 @@ class User < ActiveRecord::Base
     
     validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
     #Validation
-    validates :password, presence: true, length: { minimum: 6 , maximum: 32}, allow_nil: true
+    validates_confirmation_of :password, :if => '!password.nil?'
+    validates :password, presence: true, :on => :create, :unless => :facebook_user?, length: { minimum: 6 , maximum: 32}, allow_nil: true
     validates :email, presence:true, length:{maximum: 255}, uniqueness:{case_sensitive: false}
     validates :alias, presence:true, length:{maximum: 15}, uniqueness:{case_sensitive: true}
     
     #others
     default_scope {order('users.alias ASC')}
     attr_accessor :remember_token, :activation_token, :reset_token
+    
+    def self.from_omniauth(auth)
+         where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+            user.provider = auth.provider
+            user.uid = auth.uid
+            user.alias = auth.info.name
+             user.email = auth.info.email
+            #user.avatar = URI.parse(auth.info.image)
+            user.oauth_token = auth.credentials.token
+            user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+            user.save!
+        end
+        
+    end
     
 
     # Returns the hash digest of the given string.
@@ -98,6 +112,10 @@ class User < ActiveRecord::Base
     private
     def down_email
         self.email = email.downcase
+    end
+    
+    def facebook_user?
+        not uid.nil? and not provider.nil?
     end
     
     # Creates and assigns the activation token and digest.

@@ -34,9 +34,15 @@
       <%= f.submit "Login",class:'ui vanilla large button'%>
 
    <% end %>
-
+    
     <div class="ui shadow message">
-      New to us? <%=link_to 'Sign Up', signup_path%>
+        <%=link_to 'Sign Up using Facebook', '/auth/facebook'%>
+    </div>
+    <div class="ui shadow message">
+        <%=link_to 'Sign Up using Twitter', '/auth/twitter'%>
+    </div>
+    <div class="ui shadow message">
+      New to us? <%=link_to 'Sign Up', signup_path %>
     </div>
   </div>
 </div>

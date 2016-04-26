@@ -13,9 +13,34 @@ class SessionsController < ApplicationController
         end
     end
     
+    
+  def create_from_fb
+    email = env['omniauth.auth']['info']['email'] 
+    if email.nil? or email.empty?
+        redirect_to '/auth/facebook?auth_type=rerequest&scope=email'
+    else
+        user = User.from_omniauth(env["omniauth.auth"])
+              if user_status_enab(user)
+                message = "Your Account appears to be disabled"
+                flash[:warning] = message   
+                redirect_to root_url
+              else
+                reset_session
+                log_in user
+                if user.profile.nil?
+                    redirect_to new_user_profile_url(user.id)
+                else
+                    redirect_back_or root_url
+                end
+               end
+    end
+  end
+    
   def create
       user = User.find_by(email: params[:session][:email].downcase)
-      if user && user.authenticate(params[:session][:password])
+      if user.provider != nil
+      redirect_to login_path, notice: 'Invalid Login' 
+      elsif user && user.authenticate(params[:session][:password])
           if user.activated?
               if user_status_enab(user)
                 message = "Your Account appears to be disabled"
@@ -30,14 +55,14 @@ class SessionsController < ApplicationController
                 else
                     redirect_back_or root_url
                 end
-              end
+               end
           else
             message  = 'Account not activated.'
             message += "Check your email for the activation link."
             flash[:warning] = message   
             redirect_to root_url
           end
-        else
+      else
           # Create an error message.
           flash.now[:danger] = 'Invalid email/password combination' # Not quite right!
           render 'new'

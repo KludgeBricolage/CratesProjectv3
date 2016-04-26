@@ -14,8 +14,8 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require semantic
-//= require forem
 //= require crates
+//= require social-share-button
 //= require jquery.bxslider.min
 //= require masonry.pkgd.min
 //= require turbolinks

@@ -1,6 +1,7 @@
 class Reply < ActiveRecord::Base
-  include PublicActivity::Common 
-  belongs_to :user
+  include PublicActivity::Common
+  belongs_to :user    
+  belongs_to :reply
   belongs_to :query
   validates :body, presence:true, length:{maximum: 150}
   validates :query_id, presence: true, allow_nil: false

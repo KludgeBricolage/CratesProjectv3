@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
     
-    
-    
+    match 'auth/:provider/callback', to: 'sessions#create_from_fb', via: [:get, :post]
+    match 'auth/failure', to: redirect('/'), via: [:get, :post]
+    match 'signout', to: 'session#destroy', as: 'signout', via: [:get, :post]
+
     get 'password_resets/new'
     get 'password_resets/edit'
     root 'pages#home'
@@ -49,6 +51,8 @@ Rails.application.routes.draw do
         resources :forum_comments, only: [:new,:create,:destroy,:edit,:update] 
     end
     resources :forum_comments, only: [:new,:create,:destroy,:edit,:update] 
+    
+   
     
     #match "*path", to: "application#dont_url_manipulate", via: :all
 end

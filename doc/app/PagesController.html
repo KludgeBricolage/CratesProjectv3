@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8">
+
+<title>class PagesController - Rails Application Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="ApplicationController.html">ApplicationController</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-change_status">#change_status</a>
+    
+    <li ><a href="#method-i-community">#community</a>
+    
+    <li ><a href="#method-i-crate_manager">#crate_manager</a>
+    
+    <li ><a href="#method-i-get_all_cq">#get_all_cq</a>
+    
+    <li ><a href="#method-i-get_all_fp">#get_all_fp</a>
+    
+    <li ><a href="#method-i-get_all_rep">#get_all_rep</a>
+    
+    <li ><a href="#method-i-home">#home</a>
+    
+    <li ><a href="#method-i-home_guest">#home_guest</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-PagesController">
+  <h1 id="class-PagesController" class="class">
+    class PagesController
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-change_status" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">change_status</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="change_status-source">
+            <pre><span class="ruby-comment"># File app/controllers/pages_controller.rb, line 21</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">change_status</span>
+    <span class="ruby-constant">Crate</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:crate_id</span>]).<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">active_status_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:active_id</span>])
+    <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">crate_manager_path</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-community" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">community</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="community-source">
+            <pre><span class="ruby-comment"># File app/controllers/pages_controller.rb, line 26</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">community</span>
+    <span class="ruby-ivar">@users</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">all</span>
+    <span class="ruby-ivar">@groups</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">all</span>        
+    <span class="ruby-ivar">@forum_cat</span> = <span class="ruby-constant">ForumCategory</span>.<span class="ruby-identifier">all</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-crate_manager" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">crate_manager</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="crate_manager-source">
+            <pre><span class="ruby-comment"># File app/controllers/pages_controller.rb, line 15</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">crate_manager</span>
+    <span class="ruby-ivar">@active_crates</span> = <span class="ruby-identifier">search_byst</span>(<span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">1</span>)
+    <span class="ruby-ivar">@inactive_crates</span> = <span class="ruby-identifier">search_byst</span>(<span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">2</span>)
+    <span class="ruby-ivar">@fin_crates</span> = <span class="ruby-identifier">search_byst</span>(<span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">3</span>)    
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-get_all_cq" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_all_cq</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_all_cq-source">
+            <pre><span class="ruby-comment"># File app/controllers/pages_controller.rb, line 37</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_all_cq</span>
+    <span class="ruby-ivar">@q_noti</span> = <span class="ruby-constant">PublicActivity</span><span class="ruby-operator">::</span><span class="ruby-constant">Activity</span>.<span class="ruby-identifier">where</span>( <span class="ruby-identifier">trackable</span><span class="ruby-operator">:</span> <span class="ruby-identifier">get_c_queries</span>).<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;created_at desc&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-get_all_fp" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_all_fp</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_all_fp-source">
+            <pre><span class="ruby-comment"># File app/controllers/pages_controller.rb, line 45</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_all_fp</span>
+    <span class="ruby-ivar">@f_noti</span> = <span class="ruby-constant">PublicActivity</span><span class="ruby-operator">::</span><span class="ruby-constant">Activity</span>.<span class="ruby-identifier">where</span>( <span class="ruby-identifier">trackable</span><span class="ruby-operator">:</span> <span class="ruby-identifier">get_f_queries</span>).<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;created_at desc&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-get_all_rep" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_all_rep</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_all_rep-source">
+            <pre><span class="ruby-comment"># File app/controllers/pages_controller.rb, line 41</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_all_rep</span>
+    <span class="ruby-ivar">@r_noti</span> = <span class="ruby-constant">PublicActivity</span><span class="ruby-operator">::</span><span class="ruby-constant">Activity</span>.<span class="ruby-identifier">where</span>( <span class="ruby-identifier">trackable</span><span class="ruby-operator">:</span> <span class="ruby-identifier">get_replies</span>).<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;created_at desc&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-home" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">home</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="home-source">
+            <pre><span class="ruby-comment"># File app/controllers/pages_controller.rb, line 4</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">home</span>
+    <span class="ruby-ivar">@acc</span> = <span class="ruby-identifier">search_byst</span>(<span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">1</span>).<span class="ruby-identifier">size</span> <span class="ruby-keyword">or</span> <span class="ruby-value">0</span>
+    <span class="ruby-ivar">@iac</span> = <span class="ruby-identifier">search_byst</span>(<span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">2</span>).<span class="ruby-identifier">size</span> <span class="ruby-keyword">or</span> <span class="ruby-value">0</span>
+    <span class="ruby-ivar">@fcc</span> = <span class="ruby-identifier">search_byst</span>(<span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">3</span>).<span class="ruby-identifier">size</span> <span class="ruby-keyword">or</span> <span class="ruby-value">0</span>
+    <span class="ruby-ivar">@tcc</span> = <span class="ruby-constant">Crate</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">user</span><span class="ruby-operator">:</span> <span class="ruby-identifier">current_user</span>).<span class="ruby-identifier">count</span> <span class="ruby-keyword">or</span> <span class="ruby-value">0</span>
+    <span class="ruby-ivar">@r_noti</span> = <span class="ruby-constant">PublicActivity</span><span class="ruby-operator">::</span><span class="ruby-constant">Activity</span>.<span class="ruby-identifier">where</span>( <span class="ruby-identifier">trackable</span><span class="ruby-operator">:</span> <span class="ruby-identifier">get_replies</span>).<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;created_at desc&quot;</span>).<span class="ruby-identifier">limit</span>(<span class="ruby-value">10</span>)
+    <span class="ruby-ivar">@q_noti</span> = <span class="ruby-constant">PublicActivity</span><span class="ruby-operator">::</span><span class="ruby-constant">Activity</span>.<span class="ruby-identifier">where</span>( <span class="ruby-identifier">trackable</span><span class="ruby-operator">:</span> <span class="ruby-identifier">get_c_queries</span>).<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;created_at desc&quot;</span>).<span class="ruby-identifier">limit</span>(<span class="ruby-value">10</span>)
+    <span class="ruby-ivar">@f_noti</span> = <span class="ruby-constant">PublicActivity</span><span class="ruby-operator">::</span><span class="ruby-constant">Activity</span>.<span class="ruby-identifier">where</span>( <span class="ruby-identifier">trackable</span><span class="ruby-operator">:</span> <span class="ruby-identifier">get_f_queries</span>).<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;created_at desc&quot;</span>).<span class="ruby-identifier">limit</span>(<span class="ruby-value">10</span>)
+    <span class="ruby-comment">#get notifications of your forum posts</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-home_guest" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">home_guest</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="home_guest-source">
+            <pre><span class="ruby-comment"># File app/controllers/pages_controller.rb, line 32</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">home_guest</span>
+    
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

@@ -45,7 +45,8 @@
                         <div class="ui label">Tags: <%=raw tag_links(@crate.all_tags)%></div>
                     </div>
                     <div class="extra">
-                           <div class="extra">Posted <%=(@crate.created_at).strftime('%B %d, %Y')%></div>
+                        <div class="extra">Posted <%=(@crate.created_at).strftime('%B %d, %Y')%></div>
+                        <%= social_share_button_tag(@crate.name, :popup => "true") %>
                     </div>
                    </div>
             </div>
