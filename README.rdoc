@@ -1,15 +1,12 @@
-CratesProject
-The research project aims to develop a platform for community trading: user generated content
-for classified ads, and community message boards: user interaction and communication. 
+<b> CratesProject </b>
+- The research project aims to develop a platform for community trading: user generated content for classified ads, and community message boards: user interaction and communication. 
 
-Technologies(Web)
-MySQL
-Ruby (v 2.2.3)
-Ruby on Rails (v 4.2.4)
-Semantic-UI (v2.1)
-Paperclip (v4.3)
+<b> Technologies(Web) </b>
+- MySQL
+- Ruby (v 2.2.3)
+- Ruby on Rails (v 4.2.4)
+- Semantic-UI (v2.1)
+- Paperclip (v4.3)
 
-Software Process
-The research project utilized the Kanban method; a framework used to implement 
-agile by matching the amount of work in progress to the team's capacity, kanban gives teams more 
-flexible planning options, faster output, clear focus, and transparency throughout the development cycle. 
+<b> Software Process </b>
+- The research project utilized the Kanban method; a framework used to implement agile by matching the amount of work in progress to the team's capacity, kanban gives teams more flexible planning options, faster output, clear focus, and transparency throughout the development cycle. 
