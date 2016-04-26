@@ -7,6 +7,3 @@
 - Ruby on Rails (v 4.2.4)
 - Semantic-UI (v2.1)
 - Paperclip (v4.3)
-
-<b> Software Process </b>
-- The research project utilized the Kanban method; a framework used to implement agile by matching the amount of work in progress to the team's capacity, kanban gives teams more flexible planning options, faster output, clear focus, and transparency throughout the development cycle. 
