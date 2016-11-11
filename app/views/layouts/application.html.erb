@@ -8,6 +8,10 @@
   <meta name="viewport" content="width=device-width, user-scalable=no" />
 
   <title><%=yield(:title)%> CratesProjectv3</title>
+  <!-- Where do I put this? :)))) -->
+  <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyA7sKylO8eS2w9qO-VxCdeORLYmclZV_Ls&libraries=places',
+              'data-turbolinks-track' => true %>
+  <!-- end -->
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
@@ -25,12 +29,12 @@
         <%else%>
 
         <div class="right menu">
-          <a class="item"  href="/login"><i class="user icon"></i>Login</a>
-          <a class="item"  href="/community"><i class="comments outline icon"></i></a>
-          <a class="item"  href="/search"><i class="shop icon"></i></a>
+        <a class="item"  href="/login"><i class="user icon"></i>Login</a>
+        <a class="item"  href="/community"><i class="comments outline icon"></i></a>
+        <a class="item"  href="/search"><i class="shop icon"></i></a>
         <%end%>
-          <a class="item"  href="/help"><i class="help icon"></i></a>
-        </div>
+        <a class="item"  href="/help"><i class="help icon"></i></a>
+       </div>
 
     </div>
 
