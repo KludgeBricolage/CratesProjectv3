@@ -35,25 +35,8 @@
   </div>
   <div class="ui inline field">
      <label>Prefered Meet-up Location</label>
-      <!-- <%= f.collection_select(:locations_id,Location.all, :id, :name) %> -->
-      <%= text_field_tag "address" %> <!-- for ActiveRecord = rename address to location + do the same with js -->
+      <%= f.collection_select(:locations_id,Location.all, :id, :name) %>
   </div>
-  <!-- Move the inline JS out? -->
-  <script type="text/javascript">
-    function initialize() {
-      var input = document.getElementById('address');
-      var autocomplete = new google.maps.places.Autocomplete(input);
-      input.onfocus=function()
-      {
-        var place = autocomplete.getPlace();
-        console.log("Name: " + place.name
-          + " || Lat: " + place.geometry.location.lat()
-          + " || Long: " + place.geometry.location.lng());
-      };
-    }
-    google.maps.event.addDomListener(window, 'load', initialize);
-  </script>
-  <!-- end of JS -->
 
   <div class="ui inline field">
      <label>Category</label>
