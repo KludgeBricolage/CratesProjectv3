@@ -57,14 +57,21 @@ module Api
 
         data[:crates] = [];
         crates.each do |crate|
+          binding.pry
           pics = [];
           pictures = crate.pictures
           pictures.each do |picture|
             pics.push(request.host + picture.image.url)
           end
 
+          usr = {
+            alias: crate.user.alias,
+            mobile: crate.user.profile.phone_number
+          }
+          
           crate = crate.to_hash
           crate[:pictures] = pics
+          crate[:user] = usr
 
           data[:crates] << crate
         end
