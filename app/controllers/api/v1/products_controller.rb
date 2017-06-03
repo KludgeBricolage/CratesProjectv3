@@ -61,6 +61,10 @@ module Api
           crates = Crate.all
         end
 
+        populate_crates(data, crates)
+      end
+
+      def populate_crates(data, crates)
         data[:crates] = [];
         crates.each do |crate|
           pics = [];
@@ -88,23 +92,21 @@ module Api
         unless params.has_key?(:q)
           return nil
         else
-          params.permit(:q)
+          params.permit(:q, :filter)
         end
       end
 
       def search_crates(req)
         data = {}
         q = nil
-
+        req[:filter] = 'name'
         data[:crates] = [];
-        if !req.nil? && req[:q].present?
-          crates = Crate.where('name LIKE ?', '%' + req[:q] + '%')
-          crates.each do |crate|
-            data[:crates] << crate
-          end
+        crates = Crate.where("#{req[:filter]} LIKE ?", "%#{req[:q]}%")
+        crates.each do |crate|
+          data[:crates] << crate
         end
 
-        data
+        populate_crates(data, crates)
       end
 
     end
