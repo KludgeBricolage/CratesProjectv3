@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       namespace :v1 do
         post 'pulls' => 'products#pulls'
         post 'locations' => 'products#locations'
+        post 'search' => 'products#search'
       end
     end
 

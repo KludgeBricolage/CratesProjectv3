@@ -9,6 +9,12 @@ module Api
         render json: data
       end
 
+      def search
+        data = search_crates(search_params)
+
+        render json: data
+      end
+
       def locations
         data = {}
         data[:locations] = []
@@ -57,7 +63,6 @@ module Api
 
         data[:crates] = [];
         crates.each do |crate|
-          binding.pry
           pics = [];
           pictures = crate.pictures
           pictures.each do |picture|
@@ -68,7 +73,7 @@ module Api
             alias: crate.user.alias,
             mobile: crate.user.profile.phone_number
           }
-          
+
           crate = crate.to_hash
           crate[:pictures] = pics
           crate[:user] = usr
@@ -79,6 +84,28 @@ module Api
         data
       end
 
+      def search_params
+        unless params.has_key?(:q)
+          return nil
+        else
+          params.permit(:q)
+        end
+      end
+
+      def search_crates(req)
+        data = {}
+        q = nil
+        
+        data[:crates] = [];
+        if !req.nil? && req[:q].present?
+          crates = Crate.where('name LIKE ?', '%' + req[:q] + '%')
+          crates.each do |crate|
+            data[:crates] << crate
+          end
+        end
+
+        data
+      end
 
     end
   end
