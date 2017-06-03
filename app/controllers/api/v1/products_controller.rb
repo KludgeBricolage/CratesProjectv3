@@ -1,7 +1,7 @@
 module Api
   module V1
     class ProductsController < ApplicationController
-      protect_from_forgery with: :null_session
+      protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format == 'application/json' }
 
       def pulls
         data = pull_many(pull_params)
@@ -95,7 +95,7 @@ module Api
       def search_crates(req)
         data = {}
         q = nil
-        
+
         data[:crates] = [];
         if !req.nil? && req[:q].present?
           crates = Crate.where('name LIKE ?', '%' + req[:q] + '%')
