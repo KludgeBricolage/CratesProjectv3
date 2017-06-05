@@ -70,7 +70,7 @@ module Api
           pics = [];
           pictures = crate.pictures
           pictures.each do |picture|
-            pics.push(request.host + picture.image.url)
+            pics.push(request.protocol + request.host + picture.image.url)
           end
 
           usr = {
