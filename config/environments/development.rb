@@ -16,7 +16,7 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: '8d944bb1.ngrok.io' }
+  config.action_mailer.default_url_options = { host: 'a3f14072.ngrok.io' }
     config.action_mailer.smtp_settings = {
         address:              'smtp.gmail.com',
         port:                 587,
