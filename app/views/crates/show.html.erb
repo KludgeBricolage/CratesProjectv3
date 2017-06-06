@@ -17,8 +17,8 @@
                     <ul class="bxslider">
                        <%@images.each do |pic| %>
                         <li><%= image_tag pic.image.url(:medium), class:'bximg'%></li>
-                        <% end %>                        
-                    </ul>                    
+                        <% end %>
+                    </ul>
                 </div>
                 <div class="content">
                    <div class="ui segment desc">
@@ -33,7 +33,7 @@
                    </div>
                    <div class="meta">
                        <i class="cube icon"></i><span class="cinema"><%=crate_quality(@crate.qualities_id)%></span>
-                       <i class="user icon"></i><span class="cinema">Owned by: <%= link_to @crate.user.alias, @crate.user %></span>                       
+                       <i class="user icon"></i><span class="cinema">Owned by: <%= link_to @crate.user.alias, @crate.user %></span>
                        <h3>Contact: <%=@contact%></h3>
                    </div>
                     <div class="description">
@@ -50,17 +50,17 @@
                     </div>
                    </div>
             </div>
-          </div>    
-        </div>        
+          </div>
+        </div>
             <%if logged_in? && is_owner?(@crate.user.id)%>
                     <div class="ui segment">
                         <div class="ui label"><%= link_to "Delete", @crate, method: :delete,data: { confirm: "You sure?" } %></div>
                         <div class="ui label"><%= link_to "Edit", edit_crate_path%></div>
                     </div>
             <%end%>
-            
+
             <div class="ui threaded comments">
-            <h3 class="ui dividing header">Queries</h3>    
+            <h3 class="ui dividing header">Queries</h3>
             <%@queries.each do |query|%>
                 <div class=" comment" id="<%=query.title%>">
                   <div class="avatar">
@@ -109,7 +109,7 @@
                 <% end %>
                 <%end%>
                 </div>
-                
+
               </div>
             <%end%>
             <%=render 'queries/query_form', query: @query %>

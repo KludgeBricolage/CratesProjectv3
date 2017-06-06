@@ -17,14 +17,14 @@ class CratesController < ApplicationController
             @crates = @search.result.page(params[:page]).per(12)
         end
     end
-    
+
     def add_profile
         if current_user.profile.nil?
             flash[:success] = 'Create a Profile First'
             redirect_to new_user_profile_url(current_user.id)
         end
     end
-    
+
     def new
       @locations = Location.all
       @crate = current_user.crates.build if logged_in?
@@ -33,7 +33,7 @@ class CratesController < ApplicationController
     def create
         @crate = current_user.crates.build(crate_params)
         if @crate.save
-            if params[:pictures]   
+            if params[:pictures]
                 params[:pictures].each { |image|
                  @crate.pictures.create(image: image)
                 }
@@ -42,14 +42,14 @@ class CratesController < ApplicationController
             redirect_to @crate
         else
             render new_crate_path
-        end        
+        end
     end
-    
+
     def edit
         @crate = friendly_find(params[:id])
         @pics = @crate.pictures
     end
-    
+
     def update
         @crate = friendly_find(params[:id])
         @pics = @crate.pictures
@@ -67,41 +67,41 @@ class CratesController < ApplicationController
             render 'edit'
         end
     end
-    
+
     def destroy
         @crate.destroy
         flash[:success] = "Crate deleted"
         redirect_to '/'
     end
-    
+
     def show
         @crate = friendly_find(params[:id])
         @images = @crate.pictures
-        @contact = @crate.user.profile.phone_number        
+        @contact = @crate.user.profile.phone_number
         @query = @crate.queries.build
         @queries = @crate.queries.all
         @reply = Reply.new
     end
-       
+
     private
     def crate_params
         params.require(:crate).permit(:name,:description,:states_id, :all_tags,:price,:qualities_id,:locations_id,:category_id,:slug)
     end
-    
+
     def correct_crate
         @crate = Crate.find(params[:id])
         redirect_to root_url if current_user.id != @crate.user.id
     end
-    
+
     def check_user_status
         @user = friendly_find(params[:id]).user
         if @user.user_status_id > 1
             redirect_to root_url, notice: "The User of this crate has been inactivated"
         end
     end
-    
+
     def friendly_find(id)
         Crate.friendly.find(id)
     end
-    
+
 end

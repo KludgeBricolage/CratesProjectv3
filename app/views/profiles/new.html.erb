@@ -15,14 +15,14 @@
                 <%= f.telephone_field :phone_number, :placeholder => "phone Number" , :required => true%>
                 <div class="meta">Can be mobile or telephone number</div>
             </div>
-            <div class="inline radio checkbox field"> 
-                <label>Gender</label> 
-                    <%= f.radio_button :gender, 'male', :checked => true%> 
+            <div class="inline radio checkbox field">
+                <label>Gender</label>
+                    <%= f.radio_button :gender, 'male', :checked => true%>
                     <%= label :gender_male, 'Male' %>
                     <%= f.radio_button :gender, 'female' %>
                     <%= label :gender_female, 'Female' %>
             </div>
-        <div class="inline field">
+        <div class="inline field" style="display:flex">
             <label>Birth Date</label>
             <%= f.date_select :birth_date, {:order => [:month, :day, :year],:prompt => true, :start_year => 1910, :end_year => (Time.now.year - 17)},:required => true %>
             </div>
@@ -30,5 +30,3 @@
         <% end %>
     </div>
 </div>
-
-  

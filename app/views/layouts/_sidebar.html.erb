@@ -3,29 +3,29 @@
 <div class="item">
     <%=link_to 'Admin Options', admin_path%>
 </div>
-<%end%> 
-    
+<%end%>
+
 <div class="item">
    <b><i class="comments outline icon"></i>Community</b>
     <div class="menu">
         <%=link_to 'Market', '/search',class: 'item'%>
         <%=link_to 'Discussion Boards',community_path,class: 'item'%>
-        <%=link_to 'Garage', current_user,class: 'item'%>
     </div>
 </div>
 
 <div class="item">
    <b><i class="user icon"></i>Personal</b>
    <div class="menu">
+     <%=link_to 'My Profile', current_user,class: 'item'%>
     <%=link_to 'Add Crate', new_crate_path,class: 'item' %>
 </div>
 </div>
 <div class="item">
        <b><i class="settings icon"></i>Settings</b>
        <div class="menu">
-        <%=link_to 'Account', edit_user_path(current_user),class: 'item' %>
+        <%=link_to 'Edit Login Credentials', edit_user_path(current_user),class: 'item' %>
         <%unless current_user.profile.nil?%>
-        <%=link_to 'Profile', edit_user_profile_path(current_user.id,current_user.profile),class: 'item' %>
+        <%=link_to 'Edit Profile Details', edit_user_profile_path(current_user.id,current_user.profile),class: 'item' %>
     <%end%>
     </div>
 </div>

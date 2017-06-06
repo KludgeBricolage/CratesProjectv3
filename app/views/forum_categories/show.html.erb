@@ -1,10 +1,10 @@
 <%=provide(:title, @fcat.name ) %>
 <h2></h2>
-<div class="ui container">   
+<div class="ui container">
         <table class="ui single line table">
             <thead>
             <tr>
-            <th>  
+            <th>
                 <h2 class="header">
                     <div class="ui large breadcrumb">
                         <%=link_to 'Discussion Boards', community_path , class: 'section'%>
@@ -13,16 +13,16 @@
                     </div>
                 </h2>
            </th>
-            <th>
-                <i class="write icon"></i><%=link_to 'New Post', new_forum_post_path(:forum_category_id => @fcat.id), class: 'item' %>
-            </th>
             <th></th>
-            </tr>    
+            <th style="text-align:right">
+              <i class="write icon"></i><%=link_to 'New Post', new_forum_post_path(:forum_category_id => @fcat.id), class: 'item' %>
+            </th>
+            </tr>
             </thead>
            <tbody>
                <%@forum_posts.each do |post| %>
                 <%=render 'shared/forum_post', post: post%>
-                <%end%> 
-           </tbody>    
-           </table>       
+                <%end%>
+           </tbody>
+           </table>
 </div>

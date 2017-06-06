@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160417125617) do
+ActiveRecord::Schema.define(version: 20170605113458) do
 
   create_table "active_statuses", force: :cascade do |t|
     t.string "name", limit: 255
@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 20160417125617) do
     t.integer  "forum_category_id", limit: 4
     t.boolean  "is_pin",                          default: false
     t.boolean  "is_lock",                         default: false
-    t.datetime "last_comment_time",                               null: false
+    t.datetime "last_comment_time"
     t.string   "slug",              limit: 255
   end
 
