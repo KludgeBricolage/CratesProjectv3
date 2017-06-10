@@ -1,28 +1,30 @@
 class SessionsController < ApplicationController
     before_action :check_user, only: [:create,:new]
-    
+
     def new
-        
+
     end
-    
+
     def check_user
-        if current_user != nil
-            message = "You are already logged in."
-            flash[:message] = message
-            redirect_to root_url
-        end
+      # check if logged in
+      if current_user != nil
+          message = "You are already logged in."
+          flash[:message] = message
+          redirect_to root_url
+      end
     end
-    
-    
+
+
   def create_from_fb
-    email = env['omniauth.auth']['info']['email'] 
+    # facebook login session
+    email = env['omniauth.auth']['info']['email']
     if email.nil? or email.empty?
         redirect_to '/auth/facebook?auth_type=rerequest&scope=email'
     else
         user = User.from_omniauth(env["omniauth.auth"])
               if user_status_enab(user)
                 message = "Your Account appears to be disabled"
-                flash[:warning] = message   
+                flash[:warning] = message
                 redirect_to root_url
               else
                 reset_session
@@ -35,16 +37,17 @@ class SessionsController < ApplicationController
                end
     end
   end
-    
+
   def create
+      # create session on login
       user = User.find_by(email: params[:session][:email].downcase)
       if user.provider != nil
-      redirect_to login_path, notice: 'Invalid Login' 
+      redirect_to login_path, notice: 'Invalid Login'
       elsif user && user.authenticate(params[:session][:password])
           if user.activated?
               if user_status_enab(user)
                 message = "Your Account appears to be disabled"
-                flash[:warning] = message   
+                flash[:warning] = message
                 redirect_to root_url
               else
                 reset_session
@@ -59,7 +62,7 @@ class SessionsController < ApplicationController
           else
             message  = 'Account not activated.'
             message += "Check your email for the activation link."
-            flash[:warning] = message   
+            flash[:warning] = message
             redirect_to root_url
           end
       else
@@ -70,15 +73,16 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    # session end
     log_out if logged_in?
     redirect_to root_url
-  end 
-    
-  private 
+  end
+
+  private
     def user_status_enab(user)
         user.user_status_id != 1
     end
-        
-  
-    
+
+
+
 end
