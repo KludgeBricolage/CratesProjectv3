@@ -2,6 +2,7 @@ class Crate < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
 
+  # Associations
   belongs_to :user
   has_one :category
   has_one :state
@@ -13,7 +14,10 @@ class Crate < ActiveRecord::Base
   has_many :queries, :dependent => :destroy
   has_one :location
 
+  # Scopes
   default_scope -> { order(created_at: :desc)}
+
+  # Validations
   validate  :validate_tags
   validate  :validate_pictures
   validates :user_id, presence: true
@@ -22,6 +26,7 @@ class Crate < ActiveRecord::Base
   validates :states_id,presence: true, :numericality => {:greater_than => 0, :less_than =>3}
   validates :price, presence: true, :numericality => {:greater_than => 0, :less_than =>1000000000}
 
+  # Actions
     def validate_tags
      errors.add(:tags, "Up to 5 Tags only") if tags.size > 5
     end
@@ -44,6 +49,9 @@ class Crate < ActiveRecord::Base
         Tag.find_by_name!(name).crates
     end
 
+  # This is used in the API
+  # Decides which data will be exposed by the API endpoint
+  # JSON format (hash)
   def to_hash
     data = {}
 
