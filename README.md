@@ -8,10 +8,12 @@ iACADEMY Software Engineering - Junior Year
 3. Run `bin/setup` in the project directory
 
 <b>About</b>  
+
 Our main guide would be Micheal Hartl's Learn Web Development with Rails: https://www.railstutorial.org/  
 Rails Application with a few API Endpoints for the Mobile Module  
 
 <b>Note</b>  
+
 Ruby on Rails isn't taught at iACADEMY so we apologize in advance.  
 This is our team's first attempt (well, third "first attempt") to develop on Ruby on Rails.  
 
