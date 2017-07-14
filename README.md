@@ -16,6 +16,7 @@ Rails Application with a few API Endpoints for the Mobile Module
 
 Ruby on Rails isn't taught at iACADEMY so we apologize in advance.  
 This is our team's first attempt (well, third "first attempt") to develop on Ruby on Rails.  
+We used our thesis as an opportunity to learn about languages and technologies not taught at iACADEMY.  
 
 If you are an iACADEMY student looking to contact us:  
 1. Create an `Issue` here on GitHub or  
