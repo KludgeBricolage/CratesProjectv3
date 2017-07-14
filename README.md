@@ -19,5 +19,6 @@ This is our team's first attempt (well, third "first attempt") to develop on Rub
 We used our thesis as an opportunity to learn about languages and technologies not taught at iACADEMY.  
 
 If you are an iACADEMY student looking to contact us:  
-1. Create an `Issue` here on GitHub or  
-2. Find my details at iACADEMY; my student id is `2013-01146`  
+- Create an `Issue` here on GitHub  
+- Find my details at iACADEMY; my student id is `2013-01146`  
+- Email my public Github Email
