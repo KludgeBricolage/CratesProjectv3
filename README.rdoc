@@ -1,9 +1,0 @@
-<b> CratesProject </b>
-- The research project aims to develop a platform for community trading: user generated content for classified ads, and community message boards: user interaction and communication. 
-
-<b> Technologies(Web) </b>
-- MySQL
-- Ruby (v 2.2.3)
-- Ruby on Rails (v 4.2.4)
-- Semantic-UI (v2.1)
-- Paperclip (v4.3)
